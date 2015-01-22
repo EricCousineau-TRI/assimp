@@ -91,6 +91,13 @@ libassimp.so.3 libassimp3 #MINVER#
  (c++)"Assimp::Importer::GetMemoryRequirements(aiMemoryInfo&) const@Base" 2.0.863
  (c++)"Assimp::Importer::IsDefaultProgressHandler() const@Base" 2.0.863
  (c++)"Assimp::Importer::GetScene() const@Base" 2.0.863
+ (c++)"aiMaterial::AddProperty(aiString const*, char const*, unsigned int, unsigned int)@Base" 3.0~
+ (c++)"aiMaterial::RemoveProperty(char const*, unsigned int, unsigned int)@Base" 3.0~
+ (c++)"aiMaterial::CopyPropertyList(aiMaterial*, aiMaterial const*)@Base" 3.0~
+ (c++)"aiMaterial::AddBinaryProperty(void const*, unsigned int, char const*, unsigned int, unsigned int, aiPropertyTypeInfo)@Base" 3.0~
+ (c++)"aiMaterial::Clear()@Base" 3.0~
+ (c++)"aiMaterial::aiMaterial()@Base" 3.0~
+ (c++)"aiMaterial::~aiMaterial()@Base" 3.0~
  aiApplyPostProcessing@Base 2.0.863
  aiAttachLogStream@Base 2.0.863
  aiCopyScene@Base 3.0~
