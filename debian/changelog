@@ -1,4 +1,4 @@
-assimp (3.0~dfsg-4) unstable; urgency=medium
+assimp (3.0~dfsg-4) UNRELEASED; urgency=medium
 
   [ IOhannes m zmölnig ]
   * Export "ai*" in C++-scope (Closes: #775890)
