@@ -1,10 +1,11 @@
-assimp (3.0~dfsg-4) UNRELEASED; urgency=medium
+assimp (3.0~dfsg-4) unstable; urgency=medium
 
-  [ IOhannes m zmölnig ]
   * Export "ai*" in C++-scope (Closes: #775890)
     + Updated libassimp3.symbols file
+  * Removed non-existing files from debian/copyright
+  * Bumped standards to 3.9.6
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sun, 08 Feb 2015 21:03:40 +0100
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 27 Apr 2015 22:27:30 +0200
 
 assimp (3.0~dfsg-3) unstable; urgency=medium
 
