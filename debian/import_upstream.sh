@@ -3,7 +3,7 @@
 UPSTREAM=$1
 
 if [ -e "${UPSTREAM}" ]; then
- git-import-orig \
+ gbp import-orig \
   --filter .gitignore \
   --filter test/ \
   --filter-pristine-tar --pristine-tar \
