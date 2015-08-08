@@ -88,4 +88,5 @@ clean:: cleandoxydocs
 cleandoxydocs:
 	rm -rf doc/AssimpCmdDoc_Html_tmp/
 	rm -rf doc/AssimpDoc_Html_tmp/
+	rm -rf doc/doxygen_sqlite3.db
 
