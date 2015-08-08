@@ -17,6 +17,7 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/assimp.git;a=summa
 Package: libassimp3v5
 Architecture: any
 Section: libs
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
  ${misc:Depends}
 Description: 3D model import library
