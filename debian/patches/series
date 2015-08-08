@@ -1,4 +1,5 @@
 no_boost_workaround.patch
+soname_3v5.patch
 pyassimp.patch
 doxygen.patch
 assimp-cmpdump_argcheck.patch

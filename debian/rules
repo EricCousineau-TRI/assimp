@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## assimp-utils depends on libassimp3
-binary/assimp-utils:: binary/libassimp3
+## assimp-utils depends on libassimp3v5
+binary/assimp-utils:: binary/libassimp3v5
 
 # trying to get clean done
 .PHONY: cleanbuilddir-force
@@ -67,7 +67,7 @@ DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^((Documentation|CommandLine).chm|tools\/assi
 DEB_DH_MAKESHLIBS_ARGS_ALL := -- -v$(DEB_UPSTREAM_VERSION)
 
 DEB_CMAKE_EXTRA_FLAGS=-DASSIMP_BUILD_ARCHITECTURE=$(DEB_HOST_ARCH) \
-	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--version-script=$(CURDIR)/debian/libassimp3.ver $(LDFLAGS)" \
+	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--version-script=$(CURDIR)/debian/libassimp3v5.ver $(LDFLAGS)" \
 	-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
 	-DBUILD_ASSIMP_SAMPLES=OFF
 
