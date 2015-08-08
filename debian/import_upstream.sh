@@ -14,8 +14,8 @@ else
 fi
 
 gbp import-orig \
-  --filter .gitignore \
-  --filter test/ \
+  --filter=.gitignore \
+  --filter=test/ \
   --filter-pristine-tar --pristine-tar \
   --sign-tags \
   ${UPSTREAM}
