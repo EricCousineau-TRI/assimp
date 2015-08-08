@@ -4,7 +4,7 @@ Description: no use building a non-existant BoostWorkaround
 --- assimp.orig/code/CMakeLists.txt
 +++ assimp/code/CMakeLists.txt
 @@ -61,20 +61,6 @@
- 	AssimpPCH.h
+ 	Assimp.cpp
  )
  
 -SET( Boost_SRCS
@@ -23,8 +23,8 @@ Description: no use building a non-existant BoostWorkaround
 -
  SET( Logging_SRCS
  	${HEADER_PATH}/DefaultLogger.hpp
- 	${HEADER_PATH}/IOStream.hpp
-@@ -639,7 +625,6 @@
+ 	${HEADER_PATH}/LogStream.hpp
+@@ -685,7 +671,6 @@
  	${Poly2Tri_SRCS}
  	${Clipper_SRCS}
  	# Necessary to show the headers in the project when using the VC++ generator:
