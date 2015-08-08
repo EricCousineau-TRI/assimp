@@ -45,6 +45,20 @@ libassimp.so.3 libassimp3 #MINVER#
  (c++)"Assimp::Exporter::~Exporter()@Base" 3.0~
  (c++|optional)"Assimp::IOStream::~IOStream()@Base" 2.0.863
  (c++|optional)"Assimp::IOSystem::~IOSystem()@Base" 2.0.863
+ (c++)"Assimp::BaseImporter::GetExtension(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::ConvertToUTF8(std::vector<char, std::allocator<char> >&)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::CheckMagicToken(Assimp::IOSystem*, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, void const*, unsigned int, unsigned int, unsigned int)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::SetupProperties(Assimp::Importer const*)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::GetExtensionList(std::set<std::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::less<std::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::basic_string<char, std::char_traits<char>, std::allocator<char> > > >&)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::TextFileToBuffer(Assimp::IOStream*, std::vector<char, std::allocator<char> >&)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::SimpleExtensionCheck(std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const*, char const*, char const*)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::ConvertUTF8toISO8859_1(std::basic_string<char, std::char_traits<char>, std::allocator<char> >&)@Base" 3.1.1~
+ (c++|optional)"Assimp::BaseImporter::SearchFileHeaderForToken(Assimp::IOSystem*, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, char const**, unsigned int, unsigned int, bool)@Base" 3.1.1~
+ (c++|optional)"Assimp::BaseImporter::ReadFile(Assimp::Importer const*, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, Assimp::IOSystem*)@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::BaseImporter()@Base" 3.1.1~
+ (c++)"Assimp::BaseImporter::~BaseImporter()@Base" 3.1.1~
+ (c++)"Assimp::Importer::SetPropertyMatrix(char const*, aiMatrix4x4t<float> const&, bool*)@Base" 3.1.1~
+ (c++)"Assimp::Importer::GetPropertyMatrix(char const*, aiMatrix4x4t<float> const&) const@Base" 3.1.1~
  (c++)"Assimp::Importer::SetIOHandler(Assimp::IOSystem*)@Base" 2.0.863
  (c++)"Assimp::Importer::RegisterLoader(Assimp::BaseImporter*)@Base" 2.0.863
  (c++)"Assimp::Importer::RegisterPPStep(Assimp::BaseProcess*)@Base" 2.0.863
@@ -98,9 +112,12 @@ libassimp.so.3 libassimp3 #MINVER#
  (c++)"aiMaterial::Clear()@Base" 3.0~
  (c++)"aiMaterial::aiMaterial()@Base" 3.0~
  (c++)"aiMaterial::~aiMaterial()@Base" 3.0~
+ (c++)"aiScene::aiScene()@Base" 3.1.1~
+ (c++)"aiScene::~aiScene()@Base" 3.1.1~
  aiApplyPostProcessing@Base 2.0.863
  aiAttachLogStream@Base 2.0.863
  aiCopyScene@Base 3.0~
+ aiFreeScene@Base 3.1.1~
  aiCreatePropertyStore@Base 3.0~
  aiCreateQuaternionFromMatrix@Base 2.0.863
  aiDecomposeMatrix@Base 2.0.863
@@ -123,6 +140,7 @@ libassimp.so.3 libassimp3 #MINVER#
  aiGetMaterialString@Base 2.0.863
  aiGetMaterialTexture@Base 2.0.863
  aiGetMaterialTextureCount@Base 2.0.863
+ aiGetMaterialUVTransform@Base 3.1.1~
  aiGetMemoryRequirements@Base 2.0.863
  aiGetPredefinedLogStream@Base 2.0.863
  aiGetVersionMajor@Base 2.0.863
@@ -144,6 +162,7 @@ libassimp.so.3 libassimp3 #MINVER#
  aiSetImportPropertyFloat@Base 2.0.863
  aiSetImportPropertyInteger@Base 2.0.863
  aiSetImportPropertyString@Base 2.0.863
+ aiSetImportPropertyMatrix@Base 3.1.1~
  aiTransformVecByMatrix3@Base 2.0.863
  aiTransformVecByMatrix4@Base 2.0.863
  aiTransposeMatrix3@Base 2.0.863
