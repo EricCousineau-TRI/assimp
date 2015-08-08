@@ -191,7 +191,7 @@ can use a comfortable installer from <a href="http://www.boost-consulting.com/pr
 http://www.boost-consulting.com/products/free</a>. Choose the appropriate version of boost for your runtime of choice.
 
 <b>If you don't want to use boost</b>, you can build against our <i>"Boost-Workaround"</i>. It consists of very small 
-implementations of the various boost utility classes used. However, you'll loose functionality (e.g. threading) by doing this. 
+implementations of the various boost utility classes used. However, you'll lose functionality (e.g. threading) by doing this. 
 So, if you can use boost, you should use boost. Otherwise, See the @link use_noboost NoBoost-Section @endlink 
 later on this page for the details of the workaround.
 
@@ -1421,6 +1421,10 @@ IFC support is new and considered experimental. Please report any bugs you may e
 - The implementation knows only about IFC2X3 and applies this rule set to all models it encounters, 
   regardless of their actual version. Loading of older or newer files may fail with parsing errors.
 
+@subsection ifc_metadata Metadata
+
+IFC file properties (IfcPropertySet) are kept as per-node metadata, see aiNode::mMetaData. 
+
 <hr>
 @section ogre Ogre
 *ATTENTION*: The Ogre-Loader is currently under development, many things have changed after this documentation was written, but they are not final enough to rewrite the documentation. So things may have changed by now!
@@ -1690,3 +1694,12 @@ void xxxxImporter::InternReadFile( const std::string& pFile,
 
 @endcode
  */
+
+ 
+ /**
+ @page AnimationOverview Animation Overview
+ \section Transformations
+ This diagram shows how you can calculate your transformationmatrices for an animated character:
+ <img src="AnimationOverview.png" />
+ 
+ **/
