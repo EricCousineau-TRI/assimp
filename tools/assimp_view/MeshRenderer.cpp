@@ -43,6 +43,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "assimp_view.h"
 
 #include <map>
+#include <functional>
 
 namespace AssimpView {
 
@@ -60,7 +61,7 @@ int CMeshRenderer::DrawUnsorted(unsigned int iIndex)
 
 	g_piDevice->SetIndices(g_pcAsset->apcMeshes[iIndex]->piIB);
 
-	D3DPRIMITIVETYPE type;
+	D3DPRIMITIVETYPE type = D3DPT_POINTLIST;
 	switch (g_pcAsset->pcScene->mMeshes[iIndex]->mPrimitiveTypes) {
 		case aiPrimitiveType_POINT:
 			type = D3DPT_POINTLIST;break;
