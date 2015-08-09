@@ -1,3 +1,21 @@
+assimp (3.1.1~dfsg-1) UNRELEASED; urgency=medium
+
+  * Imported Upstream version 3.1.1~dfsg
+    + Refreshed patches
+    + Python example has been removed upstream
+    + Added new symbols
+  * Renamed to libassimp3v5 for GCC 5 transition
+    - Closes: #790980
+    - Closes: #793217
+    - Closes: #794835
+  * Build-Depend on g++-5
+  * Multi-archi'fication
+  * Remove build-leftovers from doxygen
+  * Updated debian/watch to github
+  * Helper-script for importing sources
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sun, 09 Aug 2015 09:34:06 +0200
+
 assimp (3.0~dfsg-4) unstable; urgency=medium
 
   * Export "ai*" in C++-scope (Closes: #775890)

@@ -13,15 +13,17 @@ Build-Depends: cdbs (>= 0.4.90~),
  dpkg-dev (>= 1.15.6),
  pkg-kde-tools,
  cmake,
+ g++ (>=4:5.2.1-1),
  libboost-dev,
  zlib1g-dev | libz-dev,
  doxygen
 Vcs-Git: git://anonscm.debian.org/collab-maint/assimp.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/assimp.git;a=summary
 
-Package: libassimp3
+Package: libassimp3v5
 Architecture: any
 Section: libs
+Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
  ${misc:Depends}
 Description: 3D model import library
@@ -46,8 +48,8 @@ Package: libassimp-dev
 Architecture: any
 Section: libdevel
 Depends: ${misc:Depends},
- libassimp3 (>= ${source:Version}),
- libassimp3 (<< ${source:Upstream-Version}+1~)
+ libassimp3v5 (>= ${source:Version}),
+ libassimp3v5 (<< ${source:Upstream-Version}+1~)
 Description: 3D model import library (development)
  Assimp is a library to import various well-known 3D model formats ("assets") in
  a uniform manner.
@@ -93,8 +95,8 @@ Architecture: all
 Section: python
 Depends: ${python:Depends},
  ${misc:Depends},
- libassimp3 (>= ${source:Version}),
- libassimp3 (<< ${source:Upstream-Version}+1~)
+ libassimp3v5 (>= ${source:Version}),
+ libassimp3v5 (<< ${source:Upstream-Version}+1~)
 Description: 3D model import library (Python bindings)
  Assimp is a library to import various well-known 3D model formats ("assets") in
  a uniform manner.
