@@ -21,6 +21,8 @@ Section: libs
 Pre-Depends: ${misc:Pre-Depends}
 Depends: ${shlibs:Depends},
  ${misc:Depends}
+Breaks: libassimp3
+Replaces: libassimp3
 Description: 3D model import library
  Assimp is a library to import various well-known 3D model formats ("assets") in
  a uniform manner.
