@@ -1,3 +1,10 @@
+assimp (3.1.1~dfsg-4) experimental; urgency=medium
+
+  * Fixed imports in python module
+  * Fixed FTBFS on big-endian architectures
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 10 Aug 2015 19:55:42 +0200
+
 assimp (3.1.1~dfsg-3) experimental; urgency=medium
 
   * Conflict with libassimp3
