@@ -5,7 +5,7 @@ Description: simple dylib loading by using ctypes functionality
  This has not been forwarded (yet) to upstream, as the fix will not
  work on platforms such as w32
 Forwarded: no
-Last-Updated: 2015-07-25
+Last-Updated: 2015-08-10
 --- assimp.orig/port/PyAssimp/pyassimp/helper.py
 +++ assimp/port/PyAssimp/pyassimp/helper.py
 @@ -7,7 +7,7 @@
@@ -90,7 +90,7 @@ Last-Updated: 2015-07-25
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -120,45 +68,20 @@
+@@ -120,45 +68,21 @@
      except AttributeError:
          pass    
  
@@ -139,6 +139,7 @@ Last-Updated: 2015-07-25
 -        # in their name, do we have all of them in our address
 -        # space now until gc kicks in?
 +        #Library found!
++        from . import structs
 +        load.restype = POINTER(structs.Scene)
 + 
 +    return(load, release, LIBASSIMP)
