@@ -8,7 +8,7 @@ Build-Depends: @cdbs@,
  dpkg-dev (>= 1.15.6),
  pkg-kde-tools,
  cmake,
- g++ (>=4:5.2.1-1),
+ g++ (>=4:5.2),
  libboost-dev,
  zlib1g-dev | libz-dev,
  doxygen
