@@ -1,3 +1,11 @@
+assimp (3.1.1~dfsg-3) experimental; urgency=medium
+
+  * Conflict with libassimp3
+  * lintian-override for mismatched packagename/soname
+  * Add more files to be excluded in the source-package
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 10 Aug 2015 16:01:30 +0200
+
 assimp (3.1.1~dfsg-2) experimental; urgency=medium
 
   * Undo the SONAME bump (Closes: #790980)
