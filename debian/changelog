@@ -1,3 +1,10 @@
+assimp (3.1.1~dfsg-2) experimental; urgency=medium
+
+  * Undo the SONAME bump (Closes: #790980)
+  * Relax Build-Dependency on g++
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 10 Aug 2015 10:09:47 +0200
+
 assimp (3.1.1~dfsg-1) experimental; urgency=medium
 
   * Imported Upstream version 3.1.1~dfsg
