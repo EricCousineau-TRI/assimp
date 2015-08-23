@@ -1,3 +1,9 @@
+assimp (3.1.1~dfsg-5) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sun, 23 Aug 2015 20:36:32 +0200
+
 assimp (3.1.1~dfsg-4) experimental; urgency=medium
 
   * Fixed imports in python module
