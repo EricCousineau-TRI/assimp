@@ -13,7 +13,7 @@ Build-Depends: @cdbs@,
  zlib1g-dev | libz-dev,
  doxygen
 Vcs-Git: git://anonscm.debian.org/collab-maint/assimp.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/assimp.git;a=summary
+Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/assimp.git
 
 Package: libassimp3v5
 Architecture: any
