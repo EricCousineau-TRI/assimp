@@ -1,3 +1,9 @@
+assimp (3.2~dfsg-1) UNRELEASED; urgency=medium
+
+  * 
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Fri, 13 Nov 2015 22:39:40 +0100
+
 assimp (3.1.1~dfsg-5) unstable; urgency=medium
 
   * Upload to unstable.
