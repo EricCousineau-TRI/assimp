@@ -8,12 +8,12 @@ Last-Update: 2013-11-18
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/tools/assimp_cmd/CompareDump.cpp
 +++ assimp/tools/assimp_cmd/CompareDump.cpp
-@@ -852,7 +852,7 @@
- 	}
+@@ -881,7 +881,7 @@
+     }
  
- 	// assimp cmpdump actual expected
--	if (num < 1) {
-+	if (num < 2) {
- 		std::cout << "assimp cmpdump: Invalid number of arguments. "
- 			"See \'assimp cmpdump --help\'\r\n" << std::endl;
- 		return 1;
+     // assimp cmpdump actual expected
+-    if (num < 1) {
++    if (num < 2) {
+         std::cout << "assimp cmpdump: Invalid number of arguments. "
+             "See \'assimp cmpdump --help\'\r\n" << std::endl;
+         return 1;
