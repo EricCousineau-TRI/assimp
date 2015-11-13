@@ -8,6 +8,7 @@ Files-Excluded:
  resource.h
  *.rc
  *.dll
+ *.lib
 
 Files: *
 Copyright: 2006-2012, ASSIMP Development Team
