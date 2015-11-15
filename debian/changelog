@@ -1,8 +1,31 @@
-assimp (3.2~dfsg-1) UNRELEASED; urgency=medium
+assimp (3.2~dfsg-1) unstable; urgency=medium
 
-  * 
+  * Imported Upstream version 3.2~dfsg
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Fri, 13 Nov 2015 22:39:40 +0100
+  * Refreshed patches
+  * Updated debian/libassimp3v5.ver
+    - Unconditionally export all typeinfo/vtable symbols (Closes: #804250)
+    - Export new Assimp::ExportProperties
+  * Dropped libassimp3v5.symbols file
+  * Build-amendments
+    - Disabled assimp's boost-workaround
+    - Exclude stripped-away files from build
+    - Disabled tests for now (need too stripped away data files)
+  * Added Build-Depends
+    - libminizip-dev
+    - pkg-config
+  * Added debian/git-tuneclone.sh script
+  * Removed Debian-specific .gitignore
+  * Simplified repackaging of upstream
+    - Exclude .lib files in debian/copyright
+    - Setup filters for gbp-import-orig
+  * Regenerated debian/(control|copyright_hints)
+  * debian/copyright
+    - Exclude binary files from licensecheck
+    - Updated debian/copyright
+  * Update Vcs-Browser stanza
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sun, 15 Nov 2015 23:50:33 +0100
 
 assimp (3.1.1~dfsg-5) unstable; urgency=medium
 
