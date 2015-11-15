@@ -501,7 +501,6 @@ Files: AssimpBuildTreeSettings.cmake.in
  debian/libassimp-doc.install
  debian/libassimp3.install
  debian/libassimp3.lintian-overrides
- debian/libassimp3.symbols
  debian/libassimp3.ver
  debian/libassimp3v5.install
  debian/libassimp3v5.lintian-overrides
@@ -510,6 +509,7 @@ Files: AssimpBuildTreeSettings.cmake.in
  debian/patches/assimp-cmpdump_argcheck.patch
  debian/patches/bigendian_bitmapcopy.patch
  debian/patches/doxygen.patch
+ debian/patches/drop-stripped.patch
  debian/patches/multiarch.patch
  debian/patches/no_boost_workaround.patch
  debian/patches/pyassimp.patch
