@@ -27,15 +27,6 @@ Files: contrib/irrXML/*
 Copyright: 2002-2007, Nikolaus Gebhardt
 License: zlib/libpng
 
-Files: contrib/unzip/*
-Copyright: 1998-2005, Gilles Vollant
-License: zlib/libpng
-
-Files: contrib/unzip/unzip.c
-Copyright: 1990-2000, Info-ZIP.
- 1998-2005, Gilles Vollant
-License: zlib/libpng and infozip
-
 Files: contrib/ConvertUTF/*
 Copyright: 2001-2004, Unicode, Inc
 License: unicode
