@@ -1,3 +1,10 @@
+assimp (3.2~dfsg-2) unstable; urgency=medium
+
+  * Install CMake config files (Closes: #806317)
+  * Removed copyright-notice for non-existant files
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 26 Nov 2015 21:06:53 +0100
+
 assimp (3.2~dfsg-1) unstable; urgency=medium
 
   * Imported Upstream version 3.2~dfsg
