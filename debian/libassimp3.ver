@@ -1,17 +1,1 @@
-{
-	global:
-		ai*;
-		extern "C++" {
-                 Assimp::Base*;
-                 Assimp::IO*;
-                 Assimp::*Logger*;
-                 Assimp::Importer*;
-                 Assimp::Exporter*;
-                 Assimp::LogStream*;
-                 Assimp::ProgressHandler*;
-                 Assimp::Intern*;
-                 ai*;
-		};
-	local:
-		*;
-};
+libassimp3v5.ver
