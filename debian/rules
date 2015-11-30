@@ -17,8 +17,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## assimp-utils depends on libassimp3v5
-binary/assimp-utils:: binary/libassimp3v5
+## assimp-utils depends on libassimp3(v5)
+binary/assimp-utils:: binary/libassimp3v5 binary/libassimp3
 
 # trying to get clean done
 .PHONY: cleanbuilddir-force
@@ -27,8 +27,6 @@ cleanbuilddir-force:
 	mkdir -p $(DEB_BUILDDIR)
 
 cleanbuilddir:: cleanbuilddir-force
-
-
 
 include /usr/share/cdbs/1/rules/upstream-tarball.mk
 include /usr/share/cdbs/1/rules/debhelper.mk
@@ -80,6 +78,10 @@ build/libassimp-doc::
 
 build/assimp-utils::
 	cd doc && doxygen Doxyfile_Cmd
+
+# dummy rule to satisfy dependencies for binary/assimp-utils
+#  on both sid and jessie-backports
+binary/libassimp3v5 binary/libassimp3::
 
 install/libassimp-doc::
 	install -d $(cdbs_curdestdir)/usr/share/doc/libassimp-doc/samples/SimpleOpenGL
