@@ -1,3 +1,14 @@
+assimp (3.2~dfsg-3) unstable; urgency=medium
+
+  * Fixed CMake-config for linking against libassimp.
+    Thanks to Leopold Palomo-Avellaneda (Closes: #807690)
+  * Preparing an upload to backports
+    * Re-use libasimp3v5.* for libassimp3
+    * Fix target interdependencies for backports
+    * Script to fix debian/control
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 15 Dec 2015 16:36:37 +0100
+
 assimp (3.2~dfsg-2) unstable; urgency=medium
 
   * Install CMake config files (Closes: #806317)
