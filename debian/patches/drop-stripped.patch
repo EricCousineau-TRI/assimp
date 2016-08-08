@@ -7,7 +7,7 @@ Forwarded: not-needed (Debian specific)
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/tools/assimp_cmd/CMakeLists.txt
 +++ assimp/tools/assimp_cmd/CMakeLists.txt
-@@ -8,7 +8,6 @@
+@@ -45,7 +45,6 @@
  LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
  
  ADD_EXECUTABLE( assimp_cmd
@@ -18,11 +18,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/code/IFCLoader.cpp
 +++ assimp/code/IFCLoader.cpp
 @@ -50,7 +50,7 @@
- #include <boost/tuple/tuple.hpp>
+ #include <tuple>
  
  #ifndef ASSIMP_BUILD_NO_COMPRESSED_IFC
--#   include "../contrib/unzip/unzip.h"
-+#   include "unzip.h"
+-#   include <contrib/unzip/unzip.h>
++#   include <unzip.h>
  #endif
  
  #include "IFCLoader.h"
@@ -32,8 +32,8 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #ifndef AI_Q3BSP_ZIPARCHIVE_H_INC
  #define AI_Q3BSP_ZIPARCHIVE_H_INC
  
--#include "../contrib/unzip/unzip.h"
-+#include "unzip.h"
- #include "../include/assimp/IOStream.hpp"
- #include "../include/assimp/IOSystem.hpp"
+-#include <contrib/unzip/unzip.h>
++#include <unzip.h>
+ #include <assimp/IOStream.hpp>
+ #include <assimp/IOSystem.hpp>
  #include <string>

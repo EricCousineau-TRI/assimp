@@ -48,7 +48,7 @@ Last-Updated: 2015-08-10
  def vec2tuple(x):
      """ Converts a VECTOR3D to a Tuple """
      return (x.x, x.y, x.z)
-@@ -145,41 +121,6 @@
+@@ -145,43 +121,6 @@
  
      return bb_min, bb_max
  
@@ -68,7 +68,8 @@ Last-Updated: 2015-08-10
 -    If successful:
 -        Tuple containing (library_path, 
 -                          load from filename function,
--                          load from memory function
+-                          load from memory function,
+-                          export to filename function,
 -                          release function, 
 -                          ctypes handle to assimp library)
 -    '''
@@ -77,6 +78,7 @@ Last-Updated: 2015-08-10
 -        load     = dll.aiImportFile
 -        release  = dll.aiReleaseImport
 -        load_mem = dll.aiImportFileFromMemory
+-        export   = dll.aiExportScene
 -    except AttributeError:
 -        #OK, this is a library, but it doesn't have the functions we need
 -        return None
@@ -85,12 +87,12 @@ Last-Updated: 2015-08-10
 -    from .structs import Scene
 -    load.restype = POINTER(Scene)
 -    load_mem.restype = POINTER(Scene)
--    return (library_path, load, load_mem, release, dll)
+-    return (library_path, load, load_mem, export, release, dll)
 -
  def search_library():
      '''
      Loads the assimp library. 
-@@ -190,8 +131,6 @@
+@@ -193,8 +132,6 @@
                       release function, 
                       dll)
      '''
@@ -99,46 +101,38 @@ Last-Updated: 2015-08-10
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -199,45 +138,21 @@
+@@ -202,46 +139,21 @@
      except AttributeError:
          pass    
  
 -    candidates = []
 -    # test every file
 -    for curfolder in [folder]+additional_dirs:
--        for filename in os.listdir(curfolder):
--            # our minimum requirement for candidates is that
--            # they should contain 'assimp' somewhere in 
--            # their name
--            if filename.lower().find('assimp')==-1 or\
--                os.path.splitext(filename)[-1].lower() not in ext_whitelist:
--                continue
+-        if os.path.isdir(curfolder):
+-            for filename in os.listdir(curfolder):
+-                # our minimum requirement for candidates is that
+-                # they should contain 'assimp' somewhere in 
+-                # their name
+-                if filename.lower().find('assimp')==-1 or\
+-                    os.path.splitext(filename)[-1].lower() not in ext_whitelist:
+-                    continue
 -
--            library_path = os.path.join(curfolder, filename)
--            logger.debug('Try ' + library_path)
--            try:
--                dll = ctypes.cdll.LoadLibrary(library_path)
--            except Exception as e:
--                logger.warning(str(e))
--                # OK, this except is evil. But different OSs will throw different
--                # errors. So just ignore any errors.
--                continue
--            # see if the functions we need are in the dll
--            loaded = try_load_functions(library_path, dll)
--            if loaded: candidates.append(loaded)
+-                library_path = os.path.join(curfolder, filename)
+-                logger.debug('Try ' + library_path)
+-                try:
+-                    dll = ctypes.cdll.LoadLibrary(library_path)
+-                except Exception as e:
+-                    logger.warning(str(e))
+-                    # OK, this except is evil. But different OSs will throw different
+-                    # errors. So just ignore any errors.
+-                    continue
+-                # see if the functions we need are in the dll
+-                loaded = try_load_functions(library_path, dll)
+-                if loaded: candidates.append(loaded)
 -
 -    if not candidates:
 -        # no library found
 -        raise AssimpError("assimp library not found")
--    else:
--        # get the newest library_path
--        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
--        res = max(candidates, key=operator.itemgetter(0))[1]
--        logger.debug('Using assimp library located at ' + res[0])
--
--        # XXX: if there are 1000 dll/so files containing 'assimp'
--        # in their name, do we have all of them in our address
--        # space now until gc kicks in?
 +    libassimp = 'libassimp.so.3'
 +    LIBASSIMP = ctypes.CDLL(libassimp)
 +    try:
@@ -147,15 +141,23 @@ Last-Updated: 2015-08-10
 +    except AttributeError:
 +        #OK, this is a library, but it has not the functions we need
 +        raise AssimpError, "assimp library not found"
- 
--        # XXX: take version postfix of the .so on linux?
--        return res[1:]
-+    else:
+     else:
+-        # get the newest library_path
+-        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
+-        res = max(candidates, key=operator.itemgetter(0))[1]
+-        logger.debug('Using assimp library located at ' + res[0])
+-
+-        # XXX: if there are 1000 dll/so files containing 'assimp'
+-        # in their name, do we have all of them in our address
+-        # space now until gc kicks in?
 +        #Library found!
 +        from . import structs
 +        load.restype = POINTER(structs.Scene)
 + 
 +    return(load, release, LIBASSIMP)
+ 
+-        # XXX: take version postfix of the .so on linux?
+-        return res[1:]
  
  def hasattr_silent(object, name):
      """
