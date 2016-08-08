@@ -11,12 +11,12 @@ Files-Excluded:
  *.lib
 
 Files: *
-Copyright: 2006-2015, ASSIMP Development Team
-License: BSD-3
+Copyright: 2006-2016, ASSIMP Development Team
+License: BSD-3-clause
 
 Files: include/assimp/Compiler/pstdint.h
 Copyright: 2005-2007, Paul Hsieh
-License: BSD-3
+License: BSD-3-clause
 
 Files: contrib/clipper/*
 Copyright: 2010-2011, Angus Johnson
@@ -33,21 +33,33 @@ License: unicode
 
 Files: contrib/poly2tri/*
 Copyright: 2009-2010, Poly2Tri Contributors
-License: BSD-3
+License: BSD-3-clause
 
 Files: contrib/openddlparser/*
 Copyright: 2014-2015, Kim Kulling
 License: Expat
 
+Files: contrib/rapidjson/*
+Copyright: 2015, THL A29 Limited, a Tencent company, and Milo Yip
+License: Expat
+
+Files: contrib/rapidjson/include/rapidjson/msinttypes/*
+Copyright: 2006-2013 Alexander Chemeris
+License: BSD-3-clause
+
 Files: samples/DevIL/*
 Copyright: 2000-2009, Denton Woods et al.
 License: LGPL-2.1+
+
+Files: tools/assimp_cmd/generic_inserter.hpp
+Copyright: 2006-2016, ASSIMP Development Team
+License: BSL-1
 
 Files: debian/*
 Copyright: 2011-15, IOhannes m zmölnig <zmoelnig@iem.at>
 License: GPL-3+
 
-License: BSD-3
+License: BSD-3-clause
  Redistribution and use in source and binary forms, with or without
  modification, is permitted provided that the following conditions are
  met:
