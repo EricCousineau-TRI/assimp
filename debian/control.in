@@ -14,7 +14,7 @@ Build-Depends: @cdbs@,
  zlib1g-dev | libz-dev,
  libminizip-dev,
  doxygen
-Vcs-Git: git://anonscm.debian.org/collab-maint/assimp.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/assimp.git
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/assimp.git
 
 Package: libassimp3v5
