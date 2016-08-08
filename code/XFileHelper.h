@@ -2,7 +2,7 @@
 Open Asset Import Library (assimp)
 ----------------------------------------------------------------------
 
-Copyright (c) 2006-2015, assimp team
+Copyright (c) 2006-2016, assimp team
 All rights reserved.
 
 Redistribution and use of this software in source and binary forms,
@@ -47,10 +47,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <stdint.h>
 
-#include "../include/assimp/types.h"
-#include "../include/assimp/quaternion.h"
-#include "../include/assimp/mesh.h"
-#include "../include/assimp/anim.h"
+#include <assimp/types.h>
+#include <assimp/quaternion.h>
+#include <assimp/mesh.h>
+#include <assimp/anim.h>
 #include "Defines.h"
 
 namespace Assimp
