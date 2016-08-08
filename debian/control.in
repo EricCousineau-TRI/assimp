@@ -2,7 +2,7 @@ Source: assimp
 Section: graphics
 Priority: extra
 Maintainer: IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>
-Homepage: http://assimp.sourceforge.net/
+Homepage: http://assimp.org
 Standards-Version: 3.9.8
 Build-Depends: @cdbs@,
  dpkg-dev (>= 1.15.6),
