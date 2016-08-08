@@ -1,3 +1,17 @@
+assimp (3.3.1~dfsg-1) unstable; urgency=medium
+
+  * New upstream version 3.3.1~dfsg
+
+  * Refreshed patches
+    * Dropped patches applied upstream.
+  * Documented how to properly clone the package repository via gbp.
+  * Updated Vcs-Git stanza to use https://
+  * Updated upstream homepage-field
+  * Updated copyright information
+  * Bumped standards version to 3.9.8
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 08 Aug 2016 17:11:00 +0200
+
 assimp (3.2~dfsg-3) unstable; urgency=medium
 
   * Fixed CMake-config for linking against libassimp.

@@ -2,10 +2,10 @@ Source: assimp
 Section: graphics
 Priority: extra
 Maintainer: IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>
-Homepage: http://assimp.sourceforge.net/
-Standards-Version: 3.9.6
+Homepage: http://assimp.org
+Standards-Version: 3.9.8
 Build-Depends: cdbs (>= 0.4.90~),
- debhelper (>= 9~),
+ debhelper,
  dh-buildinfo,
  devscripts,
  python,
@@ -19,7 +19,7 @@ Build-Depends: cdbs (>= 0.4.90~),
  zlib1g-dev | libz-dev,
  libminizip-dev,
  doxygen
-Vcs-Git: git://anonscm.debian.org/collab-maint/assimp.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/assimp.git
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/assimp.git
 
 Package: libassimp3v5
