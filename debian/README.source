@@ -87,20 +87,25 @@ $ git-import-orig \
  --filter-pristine-tar --pristine-tar \
  --sign-tags /tmp/assimp-3.0-src.tar.gz
 
-git-tuneclone.sh
-----------------
+gbp clone
+---------
 
-This package comes with a script 'debian/git-tuneclone.sh'.
-Running it after a fresh clone of the packaging repository
-will fine-tune your local copy, namely:
+Starting with gbp>0.8.1, here's an simple way to automatically fine-tune the
+repository in the following ways:
 - make git ignore any .pc/ directory (created by quilt)
-- enable the "-follow-tags" when running 'git-push', so it's harder
+- enable the "--follow-tags" when running 'git-push', so it's harder
   to forget to push packaging tags along with the branches.
-- do an initial checkout of the 3 packaging branches (master, pristine-tar,
-  upstream)
-The script only needs to run once (though running it multiple times shouldn't
-matter).
-You are of course free to *not* run the script, if you prefer.
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 11 Nov 2015 11:11:03 +0100
+To enable this, run gbp-clone with the '--postclone debian/gbp/postclone.sh'
+option.
+To enable this for ALL repositories cloned via 'gbp' (in the future), do
+something like the following:
 
+    $ mkdir -p ~/bin
+    $ cp debian/gbp/postclone.sh ~/bin/gbphook-postclone
+    $ cat >> ~/.gbp.conf <<EOF
+    [clone]
+    postclone = ~/bin/gbphook-postclone
+    EOF
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 1 Aug 2016 12:15:50 +0200
