@@ -1,3 +1,4 @@
+big-endian.patch
 multiarch.patch
 pyassimp.patch
 doxygen.patch

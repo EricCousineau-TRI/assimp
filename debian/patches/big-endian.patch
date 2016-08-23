@@ -1,0 +1,18 @@
+Description: fix FTBFS on BigEndian archs
+Author: Daniel Knezevic <Daniel.Knezevic@imgtec.com>
+Origin: https://bugs.debian.org/834717
+Bug: https://github.com/assimp/assimp/pull/986
+Applied-Upstream: https://github.com/assimp/assimp/commit/9afb760e06a2214952946ba983497c000d6a8e08
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/code/glTFAsset.inl
++++ assimp/code/glTFAsset.inl
+@@ -40,6 +40,8 @@
+ 
+ #include "StringUtils.h"
+ 
++using namespace Assimp;
++
+ namespace glTF {
+ 
+ namespace {
