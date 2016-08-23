@@ -1,3 +1,10 @@
+assimp (3.3.1~dfsg-2) unstable; urgency=medium
+
+  * Fixed FTBFS on big-endian architectures
+    Thanks to Daniel Knezevic <Daniel.Knezevic@imgtec.com> (Closes: #834717)
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 23 Aug 2016 22:39:10 +0200
+
 assimp (3.3.1~dfsg-1) unstable; urgency=medium
 
   * New upstream version 3.3.1~dfsg
