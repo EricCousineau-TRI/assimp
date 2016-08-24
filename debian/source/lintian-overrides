@@ -1,8 +1,3 @@
-## the pre-compiled ms-help files are really created from doxygen and are
-# left in the source-tree for convenience by upstream.
-# The Debian package will exclude these files with the next upstream version.
-assimp source: source-contains-prebuilt-ms-help-file doc/AssimpDoc_Html/AssimpDoc.chm
-assimp source: source-contains-prebuilt-ms-help-file doc/AssimpCmdDoc_Html/AssimpCmdDoc.chm
 ## the license.txt file mentions the json-evil license verbatim, however
 # the files affected by this license have been stripped out (by upstream)
 assimp source: license-problem-json-evil contrib/rapidjson/license.txt
