@@ -1,3 +1,15 @@
+assimp (3.3.1~dfsg-3) unstable; urgency=medium
+
+  * Fixed pyassimp import (LP: #1589949)
+  * Updated d/copyright
+    * Removed unused infozip license
+    * Updated Source URL
+    * Refreshed copyright years
+  * Dropped lintian-override that is no longer needed.
+  * Filter out .git* files on (next) import-orig
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Wed, 24 Aug 2016 22:39:40 +0200
+
 assimp (3.3.1~dfsg-2) unstable; urgency=medium
 
   * Fixed FTBFS on big-endian architectures
