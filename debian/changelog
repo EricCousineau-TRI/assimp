@@ -1,3 +1,13 @@
+assimp (3.3.1~dfsg-5) unstable; urgency=medium
+
+  * Added Multi-Arch fields
+  * Updated ConvertUTF license to the DFSG-free new unicode license.
+    Thanks to Rene Engelhard <rene@debian.org> (Closes: #864729)
+    * Added lintian-override for ConvertUTF
+  * Bumped standards version to 4.0.0
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Wed, 12 Jul 2017 20:01:45 +0200
+
 assimp (3.3.1~dfsg-4) unstable; urgency=medium
 
   * Fixed pyassimp import for good.
