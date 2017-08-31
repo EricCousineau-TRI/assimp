@@ -1,3 +1,9 @@
+assimp (4.0.1~dfsg-1) UNRELEASED; urgency=medium
+
+  * 
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 31 Aug 2017 21:40:28 +0200
+
 assimp (3.3.1~dfsg-5) unstable; urgency=medium
 
   * Added Multi-Arch fields
