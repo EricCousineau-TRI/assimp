@@ -17,7 +17,7 @@ Last-Updated: 2015-08-10
  
  try: import numpy
  except: numpy = None
-@@ -16,30 +16,6 @@
+@@ -16,31 +16,6 @@
  
  from .errors import AssimpError
  
@@ -28,6 +28,7 @@ Last-Updated: 2015-08-10
 -if os.name=='posix':
 -    additional_dirs.append('./')
 -    additional_dirs.append('/usr/lib/')
+-    additional_dirs.append('/usr/lib/x86_64-linux-gnu')
 -    additional_dirs.append('/usr/local/lib/')
 -
 -    # note - this won't catch libassimp.so.N.n, but 
@@ -48,7 +49,7 @@ Last-Updated: 2015-08-10
  def vec2tuple(x):
      """ Converts a VECTOR3D to a Tuple """
      return (x.x, x.y, x.z)
-@@ -145,43 +121,6 @@
+@@ -146,43 +121,6 @@
  
      return bb_min, bb_max
  
@@ -92,7 +93,7 @@ Last-Updated: 2015-08-10
  def search_library():
      '''
      Loads the assimp library. 
-@@ -193,8 +132,6 @@
+@@ -194,8 +132,6 @@
                       release function, 
                       dll)
      '''
@@ -101,7 +102,7 @@ Last-Updated: 2015-08-10
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -202,46 +139,23 @@
+@@ -203,46 +139,23 @@
      except AttributeError:
          pass    
  

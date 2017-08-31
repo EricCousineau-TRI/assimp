@@ -1,5 +1,4 @@
 big-endian.patch
-multiarch.patch
-pyassimp.patch
 doxygen.patch
 drop-stripped.patch
+pyassimp.patch

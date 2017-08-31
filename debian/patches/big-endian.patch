@@ -7,9 +7,9 @@ Applied-Upstream: https://github.com/assimp/assimp/commit/9afb760e06a2214952946b
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/code/glTFAsset.inl
 +++ assimp/code/glTFAsset.inl
-@@ -40,6 +40,8 @@
+@@ -51,6 +51,8 @@
  
- #include "StringUtils.h"
+ using namespace Assimp;
  
 +using namespace Assimp;
 +

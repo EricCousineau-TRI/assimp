@@ -7,7 +7,7 @@ Forwarded: not-needed (Debian specific)
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/tools/assimp_cmd/CMakeLists.txt
 +++ assimp/tools/assimp_cmd/CMakeLists.txt
-@@ -45,7 +45,6 @@
+@@ -46,7 +46,6 @@
  LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
  
  ADD_EXECUTABLE( assimp_cmd
@@ -17,7 +17,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
    Main.cpp
 --- assimp.orig/code/IFCLoader.cpp
 +++ assimp/code/IFCLoader.cpp
-@@ -50,7 +50,7 @@
+@@ -51,7 +51,7 @@
  #include <tuple>
  
  #ifndef ASSIMP_BUILD_NO_COMPRESSED_IFC
@@ -28,7 +28,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #include "IFCLoader.h"
 --- assimp.orig/code/Q3BSPZipArchive.h
 +++ assimp/code/Q3BSPZipArchive.h
-@@ -40,7 +40,7 @@
+@@ -41,7 +41,7 @@
  #ifndef AI_Q3BSP_ZIPARCHIVE_H_INC
  #define AI_Q3BSP_ZIPARCHIVE_H_INC
  
@@ -39,23 +39,23 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #include <string>
 --- assimp.orig/code/D3MFImporter.cpp
 +++ assimp/code/D3MFImporter.cpp
-@@ -44,7 +44,7 @@
- #include <assimp/IOStream.hpp>
- #include <assimp/IOSystem.hpp>
- #include <assimp/DefaultLogger.hpp>
+@@ -57,7 +57,7 @@
+ #include <memory>
+ 
+ #include "D3MFOpcPackage.h"
 -#include <contrib/unzip/unzip.h>
 +#include <unzip.h>
  #include "irrXMLWrapper.h"
- #include "StringComparison.h"
- #include "StringUtils.h"
+ 
+ namespace Assimp {
 --- assimp.orig/code/D3MFOpcPackage.cpp
 +++ assimp/code/D3MFOpcPackage.cpp
-@@ -42,7 +42,7 @@
- #include "D3MFOpcPackage.h"
- #include "Exceptional.h"
+@@ -55,7 +55,7 @@
+ #include <algorithm>
+ #include <cassert>
  
 -#include <contrib/unzip/unzip.h>
 +#include <unzip.h>
- #include <assimp/IOStream.hpp>
- #include <assimp/IOSystem.hpp>
- #include <assimp/DefaultLogger.hpp>
+ 
+ namespace Assimp {
+ 

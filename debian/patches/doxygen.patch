@@ -2,18 +2,18 @@ Author: IOhannes m zmölnig
 Description: removed calls to HHC (only available on w32)
  and install into tmp-directories (make 'clean' target easier)
 Last-Updated: 2015-07-25
---- assimp.orig/doc/Doxyfile
-+++ assimp/doc/Doxyfile
-@@ -919,7 +919,7 @@
- # If a relative path is entered the value of OUTPUT_DIRECTORY will be 
- # put in front of it. If left blank `html' will be used as the default path.
+--- assimp.orig/doc/Doxyfile.in
++++ assimp/doc/Doxyfile.in
+@@ -52,7 +52,7 @@
+ # If a relative path is entered, it will be relative to the location 
+ # where doxygen was started. If left blank the current directory will be used.
  
--HTML_OUTPUT            = AssimpDoc_Html
-+HTML_OUTPUT            = AssimpDoc_Html_tmp
+-OUTPUT_DIRECTORY       = 
++OUTPUT_DIRECTORY       = doc_tmp
  
- # The HTML_FILE_EXTENSION tag can be used to specify the file extension for 
- # each generated HTML page (for example: .htm,.php,.asp). If it is left blank 
-@@ -1078,7 +1078,7 @@
+ # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
+ # 4096 sub-directories (in 2 levels) under the output directory of each output 
+@@ -1066,7 +1066,7 @@
  # the HTML help compiler (hhc.exe). If non-empty doxygen will try to run 
  # the HTML help compiler on the generated index.hhp.
  
