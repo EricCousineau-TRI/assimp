@@ -4,35 +4,25 @@ Description: removed calls to HHC (only available on w32)
 Last-Updated: 2015-07-25
 --- assimp.orig/doc/Doxyfile.in
 +++ assimp/doc/Doxyfile.in
-@@ -52,7 +52,7 @@
- # If a relative path is entered, it will be relative to the location 
- # where doxygen was started. If left blank the current directory will be used.
- 
--OUTPUT_DIRECTORY       = 
-+OUTPUT_DIRECTORY       = doc_tmp
- 
- # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 
- # 4096 sub-directories (in 2 levels) under the output directory of each output 
-@@ -1066,7 +1066,7 @@
+@@ -1066,7 +1066,6 @@
  # the HTML help compiler (hhc.exe). If non-empty doxygen will try to run 
  # the HTML help compiler on the generated index.hhp.
  
 -HHC_LOCATION           = "C:\Program Files (x86)\HTML Help Workshop/hhc.exe"
-+#HHC_LOCATION           = "C:\Program Files (x86)\HTML Help Workshop/hhc.exe"
  
  # If the GENERATE_HTMLHELP tag is set to YES, the GENERATE_CHI flag 
  # controls if a separate .chi index file is generated (YES) or that 
 --- assimp.orig/doc/Doxyfile_Cmd
 +++ assimp/doc/Doxyfile_Cmd
-@@ -1075,7 +1075,7 @@
- # The default directory is: html.
- # This tag requires that the tag GENERATE_HTML is set to YES.
+@@ -58,7 +58,7 @@
+ # entered, it will be relative to the location where doxygen was started. If
+ # left blank the current directory will be used.
  
--HTML_OUTPUT            = AssimpCmdDoc_Html
-+HTML_OUTPUT            = AssimpCmdDoc_Html_tmp
+-OUTPUT_DIRECTORY       = 
++OUTPUT_DIRECTORY       = doc_tmp
  
- # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
- # generated HTML page (for example: .htm, .php, .asp).
+ # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 4096 sub-
+ # directories (in 2 levels) under the output directory of each output format and
 @@ -1281,7 +1281,6 @@
  # The file has to be specified with full path.
  # This tag requires that the tag GENERATE_HTMLHELP is set to YES.
