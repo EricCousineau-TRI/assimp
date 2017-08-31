@@ -71,11 +71,12 @@ DEB_CMAKE_EXTRA_FLAGS=-DASSIMP_BUILD_ARCHITECTURE=$(DEB_HOST_ARCH) \
 	-DCMAKE_INSTALL_PREFIX=/usr \
 	-DBUILD_ASSIMP_SAMPLES=OFF \
 	-DASSIMP_BUILD_TESTS=OFF \
+	-DBUILD_DOCS=ON \
         -DCMAKE_DEBUG_POSTFIX='' \
 	-DASSIMP_ENABLE_BOOST_WORKAROUND=OFF
 
 build/libassimp-doc::
-	cd doc && doxygen Doxyfile
+	cd $(DEB_BUILDDIR)/doc && doxygen Doxyfile
 
 build/assimp-utils::
 	cd doc && doxygen Doxyfile_Cmd
@@ -93,7 +94,6 @@ install/libassimp-doc::
 .PHONY: cleandoxydocs
 clean:: cleandoxydocs
 cleandoxydocs:
-	rm -rf doc/AssimpCmdDoc_Html_tmp/
-	rm -rf doc/AssimpDoc_Html_tmp/
+	rm -rf doc/doc_tmp/
 	rm -rf doc/doxygen_sqlite3.db
 
