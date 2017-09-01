@@ -42,18 +42,6 @@ include /usr/share/cdbs/1/class/python-distutils.mk
 
 LDFLAGS+=-Wl,--as-needed
 
-## to get new sources, use
-## $ debian/rules get-orig-source
-DEB_UPSTREAM_URL = http://downloads.sourceforge.net/assimp
-DEB_UPSTREAM_TARBALL_EXTENSION = zip
-DEB_UPSTREAM_TARBALL_BASENAME = $(DEB_UPSTREAM_PACKAGE)--$(DEB_UPSTREAM_TARBALL_VERSION)-sdk
-
-DEB_UPSTREAM_REPACKAGE_EXCLUDES = ./lib/
-DEB_UPSTREAM_REPACKAGE_EXCLUDES += ./bin/
-DEB_UPSTREAM_REPACKAGE_EXCLUDES += ./test/models-nonbsd/
-
-DEB_UPSTREAM_TARBALL_MD5 = 9f41662501bd9d9533c4cf03b7c25d5b
-
 # In order to regenerate 'debian/control' :
 #    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
 # Then check manually if everything's ok
