@@ -133,8 +133,7 @@ Last-Updated: 2015-08-10
 -
 -    if not candidates:
 -        # no library found
--        raise AssimpError("assimp library not found")
-+    libassimp = 'libassimp.so.3'
++    libassimp = 'libassimp.so.4'
 +    LIBASSIMP = ctypes.CDLL(libassimp)
 +    try:
 +        load = LIBASSIMP.aiImportFile
@@ -143,7 +142,7 @@ Last-Updated: 2015-08-10
 +        release = LIBASSIMP.aiReleaseImport
 +    except AttributeError:
 +        #OK, this is a library, but it has not the functions we need
-+        raise AssimpError, "assimp library not found"
+         raise AssimpError("assimp library not found")
      else:
 -        # get the newest library_path
 -        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
