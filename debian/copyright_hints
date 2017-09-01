@@ -1147,17 +1147,6 @@ Copyright: Microsoft Corporation.
 License: UNKNOWN
  FIXME
 
-Files: tools/assimp_qt_viewer/doc/Assimp_qt_viewer. Manual (en).odt
- tools/assimp_qt_viewer/doc/Assimp_qt_viewer. Manual (ru).odt
-Copyright: þÈ¶¾%g®Ñþµlel
-  þÍæ¯äÚux 0@à²_JJ"­ÕÏö¹þuµiûØûî¯ð¹~_èH½28¶¬Ï||ÖïÆÐ  øID¸T¸ Q¤âzVxzØ8Ã3îVYòD¿'»BA
-  þßä¢7ÍþL8×Ïù8êät×âVâ·¸­Ån+q[ÜVâ·¸­Ån+q[ÜVâ·¸­Ån+q[ÍWgZéø.ÅüH"¹
-  þìBj¿Ýíàßb<½ð>ö#ÀûØxs}ÿ ÷÷}øñó¾Å£n[(Ý×0y
-  ÿ <§Ñ²×Wb1ìÄ7WêÙÁù¸G6Ò;_ÏÅ)ØÍ'n³-VZ¬£7/û¡ð{þï¡²_3:q¯4»y$õf^o,¨º²¯/
-  ÿ f*¥c¹gSw_
-License: UNKNOWN
- FIXME
-
 Files: contrib/gtest/scripts/upload.py
 Copyright: 2007, Google Inc.
 License: Apache-2.0
@@ -1298,27 +1287,6 @@ License: UNKNOWN
 
 Files: port/PyAssimp/scripts/3d_viewer.py
 Copyright: verin Lemaignan, 2012-2016
-License: UNKNOWN
- FIXME
-
-Files: doc/architecture/assimp-process.png
-Copyright: º6 *lM`¬X ÀX±& 0±k`ê«ß^a4X k5Y X5Y X5Y X5Á X5Á X5Á X¬É À¬É À¬É À¬	ÖÀ¬	ÖÀ¬	ÖÀ¬É¬	5Á¬	 ¬É¬	 ¬É`M ¬É`M ¬É`M ¬É`M óÖdMÖr§û'O¾xñ5Y5`úéþÐ¡C­­­?üðÃØØXùÖôÅ744tvv>}útFo}ëÖ­-[¶TóàlÛ¶­Ì¬É 5ãçvìØ±qãÆ7nÌÈ©«ÕhïÜ¹s¦o
-  Çüûí·ß¾÷Þ{)ØÖÖ6>=måo_«¡µæä#³&3§L
-  ÚÁ*Xd5U»,°¦
-  ôª8>ÌÛÙsüvCá¹¥`ñhKCf0ók²& dXóêÕ««W¯7P¸'ÅYÄëêê
-License: UNKNOWN
- FIXME
-
-Files: doc/architecture/usecases.png
-Copyright: ÍþOiÏÌÍÍÙl6DÄPÂpGG4¢ªªj||Ü{ÎÎÎH¤_h!Ä-¨pL¦þþ~6
-  ßFåÉÊ[2â£ßFmñäþûïONNÎÌÌüÌg>388(Ã_(£Ífü>}9
-  á°Ð0!$üõTDTÙ;::³éËd2á8ÄM²E`"=.IàþOå¤§§«¤ÿS!(Bá³vu±eË~8H¶@µÙlql¡D2`TÐP'Þ9:¸*ð)ÇV%â£YbÝ÷DÖEGGÇo¼åêøààHÉÊ_¬3{ÏA!	Mà>DÓ
-  ïQâO>ÖMøÍhhTøZ|ì½
-License: UNKNOWN
- FIXME
-
-Files: doc/architecture/exporter.png
-Copyright: õT»4mkØµoÛ¶Ñ 8ÓaÛ mßÛîïïWs}Gê©suå¾¶wÿu:ª!sssâsYm[òè¹ÌÒ	Ñô
 License: UNKNOWN
  FIXME
 
