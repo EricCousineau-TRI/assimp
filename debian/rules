@@ -59,7 +59,7 @@ DEB_UPSTREAM_TARBALL_MD5 = 9f41662501bd9d9533c4cf03b7c25d5b
 # Then check manually if everything's ok
 
 # Suppress scanning documentation images causing false alarms.
-DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^((Documentation|CommandLine)\.chm|tools/assimp_view/(base\.PNG|HUD\.png)|tools/shared/(default_icon\.xcf|assimp_tools_icon\.(png|ico))|tools/assimp_view/(.*\.bmp|.*\.png|text1\.bin|test\.xcf)|tools/assimp_qt_viewer/doc/.*\.odt|port/Assimp\.NET/CSharpViewerScreenShot\.PNG|doc/AssimpCmdDoc_Html/(dragonsplash\.png|AssimpCmdDoc\.chm)|doc/AssimpDoc_Html/(dragonsplash\.png|AnimationOverview\.png)|doc/architecture/.*\.png|samples/SimpleAssimpViewX/MyDocument\.xcdatamodel/(elements|layout)|packaging/windows-innosetup/LICENSE\.rtf|.*_tmp/.*|debian/(changelog|copyright(|_hints|_newhints)))$
+DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^((Documentation|CommandLine)\.chm|tools/assimp_view/(base\.PNG|HUD\.png)|tools/shared/(default_icon\.xcf|assimp_tools_icon\.(png|ico))|tools/assimp_view/(.*\.bmp|.*\.png|text1\.bin|test\.xcf)|tools/assimp_qt_viewer/doc/.*\.odt|port/Assimp\.NET/CSharpViewerScreenShot\.PNG|doc/AssimpCmdDoc_Html/(dragonsplash\.png|AssimpCmdDoc\.chm)|doc/AssimpDoc_Html/(dragonsplash\.png|AnimationOverview\.png)|doc/architecture/.*\.png|samples/SimpleAssimpViewX/MyDocument\.xcdatamodel/(elements|layout)|packaging/windows-innosetup/LICENSE\.rtf|doc/tmp/.*|debian/(changelog|copyright(|_hints|_newhints)))$
 
 DEB_DH_MAKESHLIBS_ARGS_ALL := -- -v$(DEB_UPSTREAM_VERSION)
 
