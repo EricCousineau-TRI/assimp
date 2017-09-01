@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
-# Copyright © 2011 IOhannes m zmölnig <zmoelnig@iem.at>
+# Copyright © 2017 IOhannes m zmölnig <zmoelnig@iem.at>
 #
 # Description: Main Debian packaging script for assimp
 #
@@ -17,70 +17,59 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## assimp-utils depends on libassimp4
-binary/assimp-utils:: binary/libassimp4
+# See debhelper(7) (uncomment to enable)
+# output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
 
-# trying to get clean done
-.PHONY: cleanbuilddir-force
-cleanbuilddir-force:
-	-$(if $(call cdbs_streq,$(DEB_BUILDDIR),$(DEB_SRCDIR)),,rm -rf $(DEB_BUILDDIR))
-	mkdir -p $(DEB_BUILDDIR)
+# see FEATURE AREAS in dpkg-buildflags(1)
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
-cleanbuilddir:: cleanbuilddir-force
+# see ENVIRONMENT in dpkg-buildflags(1)
+# package maintainers to append CFLAGS
+export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+# package maintainers to append LDFLAGS
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
-include /usr/share/cdbs/1/rules/upstream-tarball.mk
-include /usr/share/cdbs/1/rules/debhelper.mk
-include /usr/share/cdbs/1/class/cmake.mk
-include /usr/share/cdbs/1/rules/utils.mk
+export PYBUILD_NAME=pyassimp
 
-# provides a means to handle "size_t" on different architectures
-#  on i386 (size_t)==(unsigned int), whereas on amd64 (size_t)==(unsigned long)
-include /usr/share/pkg-kde-tools/makefiles/1/cdbs/symbolshelper.mk
+%:
+	dh $@ --with python2,python3 --buildsystem=cmake
 
-DEB_PYTHON_SETUP_CMD = debian/setup.py
-include /usr/share/cdbs/1/class/python-distutils.mk
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DASSIMP_LIB_INSTALL_DIR=lib/$(DEB_HOST_MULTIARCH) \
+		-DASSIMP_BUILD_ARCHITECTURE=$(DEB_HOST_ARCH) \
+		-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--version-script=$(CURDIR)/debian/libassimp4.ver $(LDFLAGS)" \
+		-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DBUILD_ASSIMP_SAMPLES=OFF \
+		-DASSIMP_BUILD_TESTS=OFF \
+		-DBUILD_DOCS=ON \
+	        -DCMAKE_DEBUG_POSTFIX='' \
+		-DASSIMP_ENABLE_BOOST_WORKAROUND=OFF
 
-LDFLAGS+=-Wl,--as-needed
-
-# In order to regenerate 'debian/control' :
-#    DEB_AUTO_UPDATE_DEBIAN_CONTROL=yes fakeroot debian/rules clean
-# Then check manually if everything's ok
-
-# Suppress scanning documentation images causing false alarms.
-DEB_COPYRIGHT_CHECK_IGNORE_REGEX = ^((Documentation|CommandLine)\.chm|tools/assimp_view/(base\.PNG|HUD\.png)|tools/shared/(default_icon\.xcf|assimp_tools_icon\.(png|ico))|tools/assimp_view/(.*\.bmp|.*\.png|text1\.bin|test\.xcf)|tools/assimp_qt_viewer/doc/.*\.odt|port/Assimp\.NET/CSharpViewerScreenShot\.PNG|doc/AssimpCmdDoc_Html/(dragonsplash\.png|AssimpCmdDoc\.chm)|doc/AssimpDoc_Html/(dragonsplash\.png|AnimationOverview\.png)|doc/architecture/.*\.png|samples/SimpleAssimpViewX/MyDocument\.xcdatamodel/(elements|layout)|packaging/windows-innosetup/LICENSE\.rtf|doc/tmp/.*|debian/(changelog|copyright(|_hints|_newhints)))$
-
-DEB_DH_MAKESHLIBS_ARGS_ALL := -- -v$(DEB_UPSTREAM_VERSION)
-
-DEB_CMAKE_EXTRA_FLAGS=-DASSIMP_BUILD_ARCHITECTURE=$(DEB_HOST_ARCH) \
-	-DASSIMP_LIB_INSTALL_DIR=lib/$(DEB_HOST_MULTIARCH) \
-	-DCMAKE_SHARED_LINKER_FLAGS="-Wl,--version-script=$(CURDIR)/debian/libassimp4.ver $(LDFLAGS)" \
-	-DCMAKE_EXE_LINKER_FLAGS="$(LDFLAGS)" \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DBUILD_ASSIMP_SAMPLES=OFF \
-	-DASSIMP_BUILD_TESTS=OFF \
-	-DBUILD_DOCS=ON \
-        -DCMAKE_DEBUG_POSTFIX='' \
-	-DASSIMP_ENABLE_BOOST_WORKAROUND=OFF
-
-build/libassimp-doc::
-	cd $(DEB_BUILDDIR)/doc && doxygen Doxyfile
-
-build/assimp-utils::
+override_dh_auto_build:
+	dh_auto_build
+	dh_auto_build --buildsystem=pybuild -- \
+		-d port/PyAssimp/
+	cd obj-$(DEB_HOST_MULTIARCH)/doc && doxygen Doxyfile
 	cd doc && doxygen Doxyfile_Cmd
 
-# dummy rule to satisfy dependencies for binary/assimp-utils
-#  on both sid and jessie-backports
-binary/libassimp4 binary/libassimp4::
+override_dh_auto_test:
+	# tests have been disabled, until we figure out how to make them not stall
+	@echo "skipping tests"
 
-install/libassimp-doc::
-	install -d $(cdbs_curdestdir)/usr/share/doc/libassimp-doc/samples/SimpleOpenGL
-	install -T debian/Makefile.samples \
-		$(cdbs_curdestdir)/usr/share/doc/libassimp-doc/samples/SimpleOpenGL/GNUmakefile
+override_dh_auto_install:
+	dh_auto_install
+	dh_auto_install --buildsystem=pybuild -- \
+		-d port/PyAssimp/
 
-
-.PHONY: cleandoxydocs
-clean:: cleandoxydocs
-cleandoxydocs:
+override_dh_auto_clean:
+	dh_auto_clean
+	dh_auto_clean --buildsystem=pybuild -- \
+		-d port/PyAssimp/
 	rm -rf doc/tmp/
 	rm -rf doc/doxygen_sqlite3.db
 
+# ## cdbs leftovers
+# #DEB_DH_MAKESHLIBS_ARGS_ALL := -- -v$(DEB_UPSTREAM_VERSION)

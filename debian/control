@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>
 Homepage: http://assimp.org
 Standards-Version: 4.0.0
-Build-Depends: cdbs,
+Build-Depends:
  debhelper (>=10~),
  dh-python,
  dh-buildinfo,
