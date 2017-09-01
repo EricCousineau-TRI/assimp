@@ -102,7 +102,7 @@ Depends: ${python:Depends},
  ${misc:Depends},
  libassimp4 (>= ${source:Version}),
  libassimp4(<< ${source:Upstream-Version}+1~)
-Description: 3D model import library (Python bindings)
+Description: 3D model import library (Python2 bindings)
  Assimp is a library to import various well-known 3D model formats ("assets") in
  a uniform manner.
  Assimp aims at providing a full asset conversion pipeline for use in game
@@ -110,3 +110,19 @@ Description: 3D model import library (Python bindings)
  audience.
  .
  This package provides Python bindings to the Assimp library.
+
+Package: python3-pyassimp
+Architecture: all
+Section: python
+Depends: ${python3:Depends},
+ ${misc:Depends},
+ libassimp4 (>= ${source:Version}),
+ libassimp4(<< ${source:Upstream-Version}+1~)
+Description: 3D model import library (Python3 bindings)
+ Assimp is a library to import various well-known 3D model formats ("assets") in
+ a uniform manner.
+ Assimp aims at providing a full asset conversion pipeline for use in game
+ engines / realtime rendering systems of any kind but is not limited to this
+ audience.
+ .
+ This package provides Python3 bindings to the Assimp library.
