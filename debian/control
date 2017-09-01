@@ -6,19 +6,19 @@ Homepage: http://assimp.org
 Standards-Version: 4.0.0
 Build-Depends: cdbs,
  debhelper (>=10~),
+ dh-python,
  dh-buildinfo,
  licensecheck,
- python,
- python-dev (>= 2.3.5-7),
- dpkg-dev (>= 1.15.6),
- pkg-kde-tools,
+ dpkg-dev,
  cmake,
  pkg-config,
  g++ (>=4:5.2),
  libboost-dev,
  zlib1g-dev | libz-dev,
  libminizip-dev,
- doxygen
+ doxygen,
+ python-all,
+ python3-all,
 Vcs-Git: https://anonscm.debian.org/git/collab-maint/assimp.git
 Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/assimp.git
 
