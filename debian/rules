@@ -93,6 +93,6 @@ install/libassimp-doc::
 .PHONY: cleandoxydocs
 clean:: cleandoxydocs
 cleandoxydocs:
-	rm -rf doc/doc_tmp/
+	rm -rf doc/tmp/
 	rm -rf doc/doxygen_sqlite3.db
 
