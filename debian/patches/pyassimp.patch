@@ -163,3 +163,12 @@ Last-Updated: 2015-08-10
  
  def hasattr_silent(object, name):
      """
+--- assimp.orig/port/PyAssimp/setup.py
++++ assimp/port/PyAssimp/setup.py
+@@ -9,5 +9,5 @@
+       url='https://github.com/assimp/assimp',
+       packages=['pyassimp'],
+       data_files=[('share/pyassimp', ['README.md']),
+-                  ('share/examples/pyassimp', ['scripts/' + f for f in os.listdir('scripts/')])], requires=['numpy']
++                  ], requires=['numpy']
+       )
