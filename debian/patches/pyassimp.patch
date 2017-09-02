@@ -165,10 +165,11 @@ Last-Updated: 2015-08-10
      """
 --- assimp.orig/port/PyAssimp/setup.py
 +++ assimp/port/PyAssimp/setup.py
-@@ -9,5 +9,5 @@
+@@ -8,6 +8,5 @@
+       description='Python bindings for the Open Asset Import Library (ASSIMP)',
        url='https://github.com/assimp/assimp',
        packages=['pyassimp'],
-       data_files=[('share/pyassimp', ['README.md']),
+-      data_files=[('share/pyassimp', ['README.md']),
 -                  ('share/examples/pyassimp', ['scripts/' + f for f in os.listdir('scripts/')])], requires=['numpy']
-+                  ], requires=['numpy']
++      requires=['numpy']
        )
