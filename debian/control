@@ -9,7 +9,6 @@ Build-Depends:
  dh-python,
  dh-buildinfo,
  licensecheck,
- dpkg-dev,
  cmake,
  pkg-config,
  g++ (>=4:5.2),
