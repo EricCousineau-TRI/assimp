@@ -69,7 +69,6 @@ override_dh_auto_clean:
 	dh_auto_clean --buildsystem=pybuild -- \
 		-d port/PyAssimp/
 	rm -rf doc/tmp/
-	rm -rf doc/doxygen_sqlite3.db
 
 licensecheck:
 	licensecheck --deb-machine -r * \
