@@ -74,7 +74,7 @@ Files: contrib/rapidjson/*
 Copyright: 2002, JSON.org
   2006-2013, Alexander Chemeris
   2015, THL A29 Limited, a Tencent company, and Milo Yip.
-License: BSD-3-clause and/or Expat
+License: BSD-3-clause and Expat
 
 Files: samples/DevIL/*
 Copyright: 2000-2009, Denton Woods et al.
