@@ -1,7 +1,3 @@
 ## the license.txt file mentions the json-evil license verbatim, however
 # the files affected by this license have been stripped out (by upstream)
 assimp source: license-problem-json-evil contrib/rapidjson/license.txt
-## convert-utf has been relicensend under a BSDish license (see d/copyright).
-# while assimp still includes the old code with the non-DFSG-free license,
-# the re-licensed code is the same
-assimp source: license-problem-convert-utf-code contrib/ConvertUTF/ConvertUTF.c
