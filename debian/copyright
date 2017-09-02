@@ -129,6 +129,16 @@ Comment:
  http://sourceforge.net/mailarchive/message.php?msg_id=27966437
  ./test/models-nonbsd/ has been excluded from the debian source package
 
+License: BSD-2-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+
 License: zlib/libpng
  This software is provided 'as-is', without any express or implied
  warranty.  In no event will the authors be held liable for any damages
