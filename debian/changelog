@@ -1,3 +1,10 @@
+assimp (4.0.1~dfsg-1~exp2) experimental; urgency=medium
+
+  * Use DEB_HOST_GNU_TYPE for building docs.
+    Thanks to Andreas Beckmann <anbe@debian.org> (Closes: #877134)
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 02 Oct 2017 00:05:30 +0200
+
 assimp (4.0.1~dfsg-1~exp1) experimental; urgency=medium
 
   * New upstream version 4.0.1~dfsg
