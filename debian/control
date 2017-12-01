@@ -1,6 +1,6 @@
 Source: assimp
 Section: graphics
-Priority: extra
+Priority: optional
 Maintainer: IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>
 Homepage: http://assimp.org
 Standards-Version: 4.1.1
