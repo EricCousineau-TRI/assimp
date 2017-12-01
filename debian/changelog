@@ -1,3 +1,13 @@
+assimp (4.0.1~dfsg-1) unstable; urgency=medium
+
+  * Upload to unstable
+
+  * Changed priority to "optional"
+  * Removed no-longer-needed lintian-override for d/copyright_hints
+  * Bumped standards version to 4.1.1
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Fri, 01 Dec 2017 21:43:31 +0100
+
 assimp (4.0.1~dfsg-1~exp2) experimental; urgency=medium
 
   * Use DEB_HOST_GNU_TYPE for building docs.
