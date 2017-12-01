@@ -3,7 +3,7 @@ Section: graphics
 Priority: extra
 Maintainer: IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>
 Homepage: http://assimp.org
-Standards-Version: 4.0.0
+Standards-Version: 4.1.1
 Build-Depends:
  debhelper (>=10~),
  dh-python,
