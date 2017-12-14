@@ -36,7 +36,7 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 +#include <unzip.h>
  #include <assimp/IOStream.hpp>
  #include <assimp/IOSystem.hpp>
- #include <string>
+ #include <vector>
 --- assimp.orig/code/D3MFImporter.cpp
 +++ assimp/code/D3MFImporter.cpp
 @@ -57,7 +57,7 @@
@@ -46,16 +46,16 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 -#include <contrib/unzip/unzip.h>
 +#include <unzip.h>
  #include "irrXMLWrapper.h"
+ #include "3MFXmlTags.h"
  
- namespace Assimp {
 --- assimp.orig/code/D3MFOpcPackage.cpp
 +++ assimp/code/D3MFOpcPackage.cpp
 @@ -55,7 +55,7 @@
+ #include <map>
  #include <algorithm>
  #include <cassert>
- 
 -#include <contrib/unzip/unzip.h>
 +#include <unzip.h>
+ #include "3MFXmlTags.h"
  
  namespace Assimp {
- 

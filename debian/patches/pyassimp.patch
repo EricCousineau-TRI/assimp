@@ -15,9 +15,9 @@ Last-Updated: 2015-08-10
 -import operator
 +import sys
  
- try: import numpy
- except: numpy = None
-@@ -16,31 +16,6 @@
+ from distutils.sysconfig import get_python_lib
+ import re
+@@ -20,42 +20,6 @@
  
  from .errors import AssimpError
  
@@ -31,7 +31,18 @@ Last-Updated: 2015-08-10
 -    additional_dirs.append('/usr/lib/x86_64-linux-gnu')
 -    additional_dirs.append('/usr/local/lib/')
 -
--    # note - this won't catch libassimp.so.N.n, but 
+-    if 'LD_LIBRARY_PATH' in os.environ:
+-        additional_dirs.extend([item for item in os.environ['LD_LIBRARY_PATH'].split(':') if item])
+-
+-    # check if running from anaconda.
+-    if "conda" or "continuum" in sys.version.lower():
+-      cur_path = get_python_lib()
+-      pattern = re.compile('.*\/lib\/')
+-      conda_lib = pattern.match(cur_path).group()
+-      logger.info("Adding Anaconda lib path:"+ conda_lib)
+-      additional_dirs.append(conda_lib)
+-
+-    # note - this won't catch libassimp.so.N.n, but
 -    # currently there's always a symlink called
 -    # libassimp.so in /usr/local/lib.
 -    ext_whitelist.append('.so')
@@ -44,37 +55,37 @@ Last-Updated: 2015-08-10
 -    for dir_candidate in path_dirs:
 -        if 'assimp' in dir_candidate.lower():
 -            additional_dirs.append(dir_candidate)
--            
+-
 -#print(additional_dirs)
  def vec2tuple(x):
      """ Converts a VECTOR3D to a Tuple """
      return (x.x, x.y, x.z)
-@@ -146,43 +121,6 @@
+@@ -161,43 +125,6 @@
  
      return bb_min, bb_max
  
 -def try_load_functions(library_path, dll):
 -    '''
 -    Try to bind to aiImportFile and aiReleaseImport
--    
+-
 -    Arguments
 -    ---------
 -    library_path: path to current lib
 -    dll:          ctypes handle to library
--    
+-
 -    Returns
 -    ---------
 -    If unsuccessful:
 -        None
 -    If successful:
--        Tuple containing (library_path, 
+-        Tuple containing (library_path,
 -                          load from filename function,
 -                          load from memory function,
 -                          export to filename function,
--                          release function, 
+-                          release function,
 -                          ctypes handle to assimp library)
 -    '''
--    
+-
 -    try:
 -        load     = dll.aiImportFile
 -        release  = dll.aiReleaseImport
@@ -83,7 +94,7 @@ Last-Updated: 2015-08-10
 -    except AttributeError:
 -        #OK, this is a library, but it doesn't have the functions we need
 -        return None
--    
+-
 -    # library found!
 -    from .structs import Scene
 -    load.restype = POINTER(Scene)
@@ -92,9 +103,9 @@ Last-Updated: 2015-08-10
 -
  def search_library():
      '''
-     Loads the assimp library. 
-@@ -194,8 +132,6 @@
-                      release function, 
+     Loads the assimp library.
+@@ -209,8 +136,6 @@
+                      release function,
                       dll)
      '''
 -    #this path
@@ -102,9 +113,9 @@ Last-Updated: 2015-08-10
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -203,46 +139,23 @@
+@@ -218,46 +143,23 @@
      except AttributeError:
-         pass    
+         pass
  
 -    candidates = []
 -    # test every file
@@ -112,7 +123,7 @@ Last-Updated: 2015-08-10
 -        if os.path.isdir(curfolder):
 -            for filename in os.listdir(curfolder):
 -                # our minimum requirement for candidates is that
--                # they should contain 'assimp' somewhere in 
+-                # they should contain 'assimp' somewhere in
 -                # their name
 -                if filename.lower().find('assimp')==-1 or\
 -                    os.path.splitext(filename)[-1].lower() not in ext_whitelist:
@@ -144,7 +155,7 @@ Last-Updated: 2015-08-10
 +        #OK, this is a library, but it has not the functions we need
          raise AssimpError("assimp library not found")
      else:
--        # get the newest library_path
+         # get the newest library_path
 -        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
 -        res = max(candidates, key=operator.itemgetter(0))[1]
 -        logger.debug('Using assimp library located at ' + res[0])
@@ -152,24 +163,24 @@ Last-Updated: 2015-08-10
 -        # XXX: if there are 1000 dll/so files containing 'assimp'
 -        # in their name, do we have all of them in our address
 -        # space now until gc kicks in?
-+        #Library found!
-+        from . import structs
-+        load.restype = POINTER(structs.Scene)
-+ 
-+    return(load, load_mem, export, release, LIBASSIMP)
++       #Library found!
++       from . import structs
++       load.restype = POINTER(structs.Scene)
  
 -        # XXX: take version postfix of the .so on linux?
 -        return res[1:]
++   return(load, load_mem, export, release, LIBASSIMP)
  
  def hasattr_silent(object, name):
      """
 --- assimp.orig/port/PyAssimp/setup.py
 +++ assimp/port/PyAssimp/setup.py
-@@ -8,6 +8,5 @@
-       description='Python bindings for the Open Asset Import Library (ASSIMP)',
+@@ -9,8 +9,6 @@
        url='https://github.com/assimp/assimp',
        packages=['pyassimp'],
--      data_files=[('share/pyassimp', ['README.md']),
--                  ('share/examples/pyassimp', ['scripts/' + f for f in os.listdir('scripts/')])], requires=['numpy']
-+      requires=['numpy']
+       data_files=[
+-                  ('share/pyassimp', ['README.md']),
+-                  ('share/examples/pyassimp', ['scripts/' + f for f in os.listdir('scripts/')])
+                  ],
+       requires=['numpy']
        )
