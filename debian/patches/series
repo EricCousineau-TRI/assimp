@@ -1,3 +1,4 @@
 doxygen.patch
 drop-stripped-sources.patch
 pyassimp.patch
+fix-hurd-FTBFS.patch

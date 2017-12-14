@@ -1,0 +1,16 @@
+Description: fix FTBFS on the Hurd (non-Apple mach)
+Author: IOhannes m zmölnig
+Last-Update: 2017-12-14
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/contrib/Open3DGC/o3dgcTimer.h
++++ assimp/contrib/Open3DGC/o3dgcTimer.h
+@@ -30,7 +30,7 @@
+ /* Thank you, Microsoft, for file WinDef.h with min/max redefinition. */
+ #define NOMINMAX
+ #include <windows.h>
+-#elif __MACH__
++#elif __APPLE__
+ #include <mach/clock.h>
+ #include <mach/mach.h>
+ #else
