@@ -1,3 +1,14 @@
+assimp (4.1.0~dfsg-1) unstable; urgency=medium
+
+  * New upstream version 4.1.0~dfsg
+
+  * Refreshed patches
+  * Fixed FTBFS on the Hurd (non-Apple mach) (Closes: #883486)
+  * Refreshed d/copyright(_hints)?
+  * Bumped standards version to 4.1.2
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 14 Dec 2017 17:37:29 +0100
+
 assimp (4.0.1~dfsg-1) unstable; urgency=medium
 
   * Upload to unstable
