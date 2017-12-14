@@ -10,6 +10,7 @@ Files: code/3DSConverter.cpp
  code/3DSHelper.h
  code/3DSLoader.cpp
  code/3DSLoader.h
+ code/3MFXmlTags.h
  code/ACLoader.cpp
  code/ACLoader.h
  code/AMFImporter.cpp
@@ -78,6 +79,8 @@ Files: code/3DSConverter.cpp
  code/ConvertToLHProcess.cpp
  code/ConvertToLHProcess.h
  code/CreateAnimMesh.h
+ code/D3MFExporter.cpp
+ code/D3MFExporter.h
  code/D3MFImporter.cpp
  code/D3MFImporter.h
  code/D3MFOpcPackage.cpp
@@ -293,6 +296,8 @@ Files: code/3DSConverter.cpp
  code/STLExporter.h
  code/STLLoader.cpp
  code/STLLoader.h
+ code/ScaleProcess.cpp
+ code/ScaleProcess.h
  code/SceneCombiner.cpp
  code/ScenePreprocessor.cpp
  code/ScenePreprocessor.h
@@ -362,6 +367,12 @@ Files: code/3DSConverter.cpp
  code/XGLLoader.cpp
  code/XGLLoader.h
  code/XMLTools.h
+ code/glTF2Asset.h
+ code/glTF2AssetWriter.h
+ code/glTF2Exporter.cpp
+ code/glTF2Exporter.h
+ code/glTF2Importer.cpp
+ code/glTF2Importer.h
  code/glTFAsset.h
  code/glTFAssetWriter.h
  code/glTFExporter.cpp
@@ -416,13 +427,18 @@ Files: code/3DSConverter.cpp
  port/jassimp/jassimp/src/jassimp/AiBoneWeight.java
  port/jassimp/jassimp/src/jassimp/AiBuiltInWrapperProvider.java
  port/jassimp/jassimp/src/jassimp/AiCamera.java
+ port/jassimp/jassimp/src/jassimp/AiClassLoaderIOSystem.java
  port/jassimp/jassimp/src/jassimp/AiColor.java
+ port/jassimp/jassimp/src/jassimp/AiIOStream.java
+ port/jassimp/jassimp/src/jassimp/AiIOSystem.java
+ port/jassimp/jassimp/src/jassimp/AiInputStreamIOStream.java
  port/jassimp/jassimp/src/jassimp/AiLight.java
  port/jassimp/jassimp/src/jassimp/AiLightType.java
  port/jassimp/jassimp/src/jassimp/AiMaterial.java
  port/jassimp/jassimp/src/jassimp/AiMatrix4f.java
  port/jassimp/jassimp/src/jassimp/AiMesh.java
  port/jassimp/jassimp/src/jassimp/AiMeshAnim.java
+ port/jassimp/jassimp/src/jassimp/AiMetadataEntry.java
  port/jassimp/jassimp/src/jassimp/AiNode.java
  port/jassimp/jassimp/src/jassimp/AiNodeAnim.java
  port/jassimp/jassimp/src/jassimp/AiPostProcessSteps.java
@@ -441,6 +457,7 @@ Files: code/3DSConverter.cpp
  port/jassimp/jassimp/src/jassimp/JaiDebug.java
  port/jassimp/jassimp/src/jassimp/Jassimp.java
  port/jassimp/jassimp/src/jassimp/JassimpConfig.java
+ port/jassimp/jassimp/src/jassimp/JassimpLibraryLoader.java
  port/jassimp/jassimp/src/jassimp/package-info.java
  tools/assimp_cmd/CompareDump.cpp
  tools/assimp_cmd/Export.cpp
@@ -496,6 +513,8 @@ Files: CodeConventions.md
  code/X3DExporter.hpp
  code/assbin_chunks.h
  code/res/resource.h
+ contrib/android-cmake/README.md
+ contrib/android-cmake/ndk_links.md
  contrib/gtest/CHANGES
  contrib/gtest/CONTRIBUTORS
  contrib/gtest/README.md
@@ -534,7 +553,13 @@ Files: CodeConventions.md
  contrib/poly2tri/AUTHORS
  contrib/poly2tri/README
  contrib/utf8cpp/doc/ReleaseNotes
+ contrib/zip/README.md
+ contrib/zip/src/miniz.h
+ contrib/zip/src/zip.c
+ contrib/zip/src/zip.h
+ contrib/zip/test/test.c
  debian/TODO
+ debian/changelog
  debian/compat
  debian/control
  debian/extra/samples/GNUmakefile
@@ -774,6 +799,7 @@ Files: contrib/rapidjson/include/rapidjson/allocators.h
  contrib/rapidjson/include/rapidjson/error/error.h
  contrib/rapidjson/include/rapidjson/filereadstream.h
  contrib/rapidjson/include/rapidjson/filewritestream.h
+ contrib/rapidjson/include/rapidjson/fwd.h
  contrib/rapidjson/include/rapidjson/internal/biginteger.h
  contrib/rapidjson/include/rapidjson/internal/diyfp.h
  contrib/rapidjson/include/rapidjson/internal/dtoa.h
@@ -781,16 +807,20 @@ Files: contrib/rapidjson/include/rapidjson/allocators.h
  contrib/rapidjson/include/rapidjson/internal/itoa.h
  contrib/rapidjson/include/rapidjson/internal/meta.h
  contrib/rapidjson/include/rapidjson/internal/pow10.h
+ contrib/rapidjson/include/rapidjson/internal/regex.h
  contrib/rapidjson/include/rapidjson/internal/stack.h
  contrib/rapidjson/include/rapidjson/internal/strfunc.h
  contrib/rapidjson/include/rapidjson/internal/strtod.h
  contrib/rapidjson/include/rapidjson/internal/swap.h
+ contrib/rapidjson/include/rapidjson/istreamwrapper.h
  contrib/rapidjson/include/rapidjson/memorybuffer.h
  contrib/rapidjson/include/rapidjson/memorystream.h
+ contrib/rapidjson/include/rapidjson/ostreamwrapper.h
  contrib/rapidjson/include/rapidjson/pointer.h
  contrib/rapidjson/include/rapidjson/prettywriter.h
  contrib/rapidjson/include/rapidjson/rapidjson.h
  contrib/rapidjson/include/rapidjson/reader.h
+ contrib/rapidjson/include/rapidjson/stream.h
  contrib/rapidjson/include/rapidjson/stringbuffer.h
  contrib/rapidjson/include/rapidjson/writer.h
  contrib/rapidjson/readme.md
@@ -930,9 +960,20 @@ Copyright: Microsoft Corporation.
 License: UNKNOWN
  FIXME
 
+Files: port/PyAssimp/scripts/3d_viewer.py
+ port/PyAssimp/scripts/3d_viewer_py3.py
+Copyright: verin Lemaignan, 2012-2016
+License: UNKNOWN
+ FIXME
+
 Files: contrib/gtest/scripts/upload.py
 Copyright: 2007, Google Inc.
 License: Apache-2.0
+ FIXME
+
+Files: debian/copyright
+Copyright: -format/1.0/
+License: BSD-3-clause
  FIXME
 
 Files: port/PyAssimp/scripts/transformations.py
@@ -962,6 +1003,11 @@ Copyright: NONE
 License: BSD~unspecified
  FIXME
 
+Files: scripts/AppVeyor/mtime_cache
+Copyright: 2016, Borislav Stanimirov
+License: Expat
+ FIXME
+
 Files: debian/rules
 Copyright: 2017, IOhannes m zmÃ¶lnig <zmoelnig@iem.at>
 License: GPL-3+
@@ -977,18 +1023,28 @@ Copyright: 2010
 License: UNKNOWN
  FIXME
 
+Files: debian/copyright_hints
+Copyright: -format/1.0/
+License: UNKNOWN
+ FIXME
+
 Files: samples/DevIL/COPYING
 Copyright: 1991, 1999, Free Software Foundation, Inc.
 License: UNKNOWN
  FIXME
 
-Files: port/PyAssimp/scripts/fixed_pipeline_3d_viewer.py
-Copyright: verin Lemaignan, 2012
+Files: contrib/rapidjson/include/rapidjson/schema.h
+Copyright: 2015, THL A29 Limited, a Tencent company, and Milo Yip->
 License: UNKNOWN
  FIXME
 
-Files: port/PyAssimp/scripts/3d_viewer.py
-Copyright: verin Lemaignan, 2012-2016
+Files: contrib/zip/UNLICENSE
+Copyright: interest in the
+License: UNKNOWN
+ FIXME
+
+Files: port/PyAssimp/scripts/fixed_pipeline_3d_viewer.py
+Copyright: verin Lemaignan, 2012
 License: UNKNOWN
  FIXME
 
