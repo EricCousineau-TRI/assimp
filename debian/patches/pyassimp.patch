@@ -163,13 +163,13 @@ Last-Updated: 2015-08-10
 -        # XXX: if there are 1000 dll/so files containing 'assimp'
 -        # in their name, do we have all of them in our address
 -        # space now until gc kicks in?
-+       #Library found!
-+       from . import structs
-+       load.restype = POINTER(structs.Scene)
++        #Library found!
++        from . import structs
++        load.restype = POINTER(structs.Scene)
  
 -        # XXX: take version postfix of the .so on linux?
 -        return res[1:]
-+   return(load, load_mem, export, release, LIBASSIMP)
++    return(load, load_mem, export, release, LIBASSIMP)
  
  def hasattr_silent(object, name):
      """
