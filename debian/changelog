@@ -1,3 +1,10 @@
+assimp (4.1.0~dfsg-2) unstable; urgency=medium
+
+  * Fixed indentation in pyassimp patch
+    * makes the python packages installable!
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 19 Dec 2017 18:12:12 +0100
+
 assimp (4.1.0~dfsg-1) unstable; urgency=medium
 
   * New upstream version 4.1.0~dfsg
