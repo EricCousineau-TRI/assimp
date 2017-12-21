@@ -1,3 +1,10 @@
+assimp (4.1.0~dfsg-3) unstable; urgency=medium
+
+  * More hurd FTBFS fixes.
+    Thanks to Aaron M. Ucko <ucko@debian.org> (Closes: #883486)
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 21 Dec 2017 21:50:24 +0100
+
 assimp (4.1.0~dfsg-2) unstable; urgency=medium
 
   * Fixed indentation in pyassimp patch
