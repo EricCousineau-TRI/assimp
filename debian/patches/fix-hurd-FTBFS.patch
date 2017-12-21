@@ -14,3 +14,12 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #include <mach/clock.h>
  #include <mach/mach.h>
  #else
+@@ -73,7 +73,7 @@
+         LARGE_INTEGER m_freq;
+ 
+     };
+-#elif __MACH__
++#elif __APPLE__
+     class Timer
+     {
+     public: 
