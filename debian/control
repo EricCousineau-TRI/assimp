@@ -18,6 +18,7 @@ Build-Depends:
  doxygen,
  python-all,
  python3-all,
+Testsuite: autopkgtest-pkg-python
 Vcs-Git: https://salsa.debian.org/debian/assimp.git
 Vcs-Browser: https://salsa.debian.org/debian/assimp
 
