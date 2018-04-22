@@ -1,3 +1,12 @@
+assimp (4.1.0~dfsg-4) unstable; urgency=medium
+
+  * Made python3-pyassimp depend on required python-modules (Closes: #896199)
+  * Added DebCI smoketests for python*-assimp
+  * Switched Vcs-* stanzas to salsa.d.o
+  * Bumped standards version to 4.1.4
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sun, 22 Apr 2018 14:45:39 +0200
+
 assimp (4.1.0~dfsg-3) unstable; urgency=medium
 
   * More hurd FTBFS fixes.
