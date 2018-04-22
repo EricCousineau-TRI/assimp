@@ -116,6 +116,7 @@ Architecture: all
 Section: python
 Depends: ${python3:Depends},
  ${misc:Depends},
+ python3-distutils,
  libassimp4 (>= ${source:Version}),
  libassimp4(<< ${source:Upstream-Version}+1~)
 Description: 3D model import library (Python3 bindings)
