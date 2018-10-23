@@ -2,3 +2,4 @@ doxygen.patch
 drop-stripped-sources.patch
 pyassimp.patch
 fix-hurd-FTBFS.patch
+0005-STLLoader-closes-https-github.com-assimp-assimp-issu.patch
