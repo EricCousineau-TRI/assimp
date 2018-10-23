@@ -1,3 +1,13 @@
+assimp (4.1.0~dfsg-5) unstable; urgency=medium
+
+  * Backport fix for data-misalignment (Closes: #911484)
+  * Refresh patches with "gbp pq"
+  * Use https:// for copyright URI
+  * Declare that the package does not require "root" for building
+  * Bump standards version to 4.2.1
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 23 Oct 2018 21:55:26 +0200
+
 assimp (4.1.0~dfsg-4) unstable; urgency=medium
 
   * Made python3-pyassimp depend on required python-modules (Closes: #896199)
