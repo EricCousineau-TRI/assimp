@@ -19,8 +19,6 @@ setup(name='pyassimp',
       maintainer_email='severin@guakamole.org',
       packages=['pyassimp'],
       data_files=[
-                  ('share/pyassimp', ['README.rst']),
-                  ('share/examples/pyassimp', ['scripts/' + f for f in os.listdir('scripts/')])
                  ],
       requires=['numpy']
       )

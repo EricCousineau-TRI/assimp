@@ -6,7 +6,6 @@ Some fancy helper functions.
 
 import os
 import ctypes
-import operator
 
 from distutils.sysconfig import get_python_lib
 import re
@@ -20,39 +19,6 @@ import logging;logger = logging.getLogger("pyassimp")
 from .errors import AssimpError
 
 additional_dirs, ext_whitelist = [],[]
-
-# populate search directories and lists of allowed file extensions
-# depending on the platform we're running on.
-if os.name=='posix':
-    additional_dirs.append('./')
-    additional_dirs.append('/usr/lib/')
-    additional_dirs.append('/usr/lib/x86_64-linux-gnu/')
-    additional_dirs.append('/usr/lib/aarch64-linux-gnu/')
-    additional_dirs.append('/usr/local/lib/')
-
-    if 'LD_LIBRARY_PATH' in os.environ:
-        additional_dirs.extend([item for item in os.environ['LD_LIBRARY_PATH'].split(':') if item])
-
-    # check if running from anaconda.
-    anaconda_keywords = ("conda", "continuum")
-    if any(k in sys.version.lower() for k in anaconda_keywords):
-      cur_path = get_python_lib()
-      pattern = re.compile('.*\/lib\/')
-      conda_lib = pattern.match(cur_path).group()
-      logger.info("Adding Anaconda lib path:"+ conda_lib)
-      additional_dirs.append(conda_lib)
-
-    # note - this won't catch libassimp.so.N.n, but
-    # currently there's always a symlink called
-    # libassimp.so in /usr/local/lib.
-    ext_whitelist.append('.so')
-    # libassimp.dylib in /usr/local/lib
-    ext_whitelist.append('.dylib')
-
-elif os.name=='nt':
-    ext_whitelist.append('.dll')
-    path_dirs = os.environ['PATH'].split(';')
-    additional_dirs.extend(path_dirs)
 
 def vec2tuple(x):
     """ Converts a VECTOR3D to a Tuple """
@@ -159,46 +125,6 @@ def get_bounding_box_for_node(node, bb_min, bb_max, transformation):
 
     return bb_min, bb_max
 
-def try_load_functions(library_path, dll):
-    '''
-    Try to bind to aiImportFile and aiReleaseImport
-
-    Arguments
-    ---------
-    library_path: path to current lib
-    dll:          ctypes handle to library
-
-    Returns
-    ---------
-    If unsuccessful:
-        None
-    If successful:
-        Tuple containing (library_path,
-                          load from filename function,
-                          load from memory function,
-                          export to filename function,
-                          export to blob function,
-                          release function,
-                          ctypes handle to assimp library)
-    '''
-
-    try:
-        load     = dll.aiImportFile
-        release  = dll.aiReleaseImport
-        load_mem = dll.aiImportFileFromMemory
-        export   = dll.aiExportScene
-        export2blob = dll.aiExportSceneToBlob
-    except AttributeError:
-        #OK, this is a library, but it doesn't have the functions we need
-        return None
-
-    # library found!
-    from .structs import Scene, ExportDataBlob
-    load.restype = ctypes.POINTER(Scene)
-    load_mem.restype = ctypes.POINTER(Scene)
-    export2blob.restype = ctypes.POINTER(ExportDataBlob)
-    return (library_path, load, load_mem, export, export2blob, release, dll)
-
 def search_library():
     '''
     Loads the assimp library.
@@ -211,8 +137,6 @@ def search_library():
                      release function,
                      dll)
     '''
-    #this path
-    folder = os.path.dirname(__file__)
 
     # silence 'DLL not found' message boxes on win
     try:
@@ -220,52 +144,24 @@ def search_library():
     except AttributeError:
         pass
 
-    candidates = []
-    # test every file
-    for curfolder in [folder]+additional_dirs:
-        if os.path.isdir(curfolder):
-            for filename in os.listdir(curfolder):
-                # our minimum requirement for candidates is that
-                # they should contain 'assimp' somewhere in
-                # their name                                  
-                if filename.lower().find('assimp')==-1 : 
-                    continue
-                is_out=1
-                for et in ext_whitelist:
-                  if et in filename.lower():
-                    is_out=0
-                    break
-                if is_out:
-                  continue
-                
-                library_path = os.path.join(curfolder, filename)
-                logger.debug('Try ' + library_path)
-                try:
-                    dll = ctypes.cdll.LoadLibrary(library_path)
-                except Exception as e:
-                    logger.warning(str(e))
-                    # OK, this except is evil. But different OSs will throw different
-                    # errors. So just ignore any errors.
-                    continue
-                # see if the functions we need are in the dll
-                loaded = try_load_functions(library_path, dll)
-                if loaded: candidates.append(loaded)
-
-    if not candidates:
-        # no library found
-        raise AssimpError("assimp library not found")
+    libassimp = 'libassimp.so.5'
+    LIBASSIMP = ctypes.CDLL(libassimp)
+    try:
+        load = LIBASSIMP.aiImportFile
+        load_mem = LIBASSIMP.aiImportFileFromMemory
+        export = LIBASSIMP.aiExportScene
+        export2blob = LIBASSIMP.aiExportSceneToBlob
+        release = LIBASSIMP.aiReleaseImport
+    except AttributeError:
+        # OK, this is a library, but it does not have the functions we need
+        raise AssimpError("assimp library '%s' not found" % (libassimp,))
     else:
-        # get the newest library_path
-        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
-        res = max(candidates, key=operator.itemgetter(0))[1]
-        logger.debug('Using assimp library located at ' + res[0])
-
-        # XXX: if there are 1000 dll/so files containing 'assimp'
-        # in their name, do we have all of them in our address
-        # space now until gc kicks in?
-
-        # XXX: take version postfix of the .so on linux?
-        return res[1:]
+        # Library found!
+        from . import structs
+        load.restype = ctypes.POINTER(structs.Scene)
+        load_mem.restype = ctypes.POINTER(structs.Scene)
+        export2blob.restype = ctypes.POINTER(structs.ExportDataBlob)
+    return(load, load_mem, export, export2blob, release, LIBASSIMP)
 
 def hasattr_silent(object, name):
     """
