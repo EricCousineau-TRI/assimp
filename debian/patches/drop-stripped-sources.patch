@@ -1,45 +1,24 @@
-Description: exclude stripped sources from build
- since we stripped out the entire tests/ directory, we must not include it in
- the build
-Author: IOhannes m zmölnig
+From: =?utf-8?q?=22IOhannes_m_zm=C3=B6lnig_=28Debian/GNU=29=22?=
+ <umlaeute@debian.org>
+Date: Tue, 23 Oct 2018 21:49:33 +0200
+Subject: exclude stripped sources from build
+
+since we stripped out the entire tests/ directory, we must not include it in
+the build
 Forwarded: not-needed (Debian specific)
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
---- assimp.orig/tools/assimp_cmd/CMakeLists.txt
-+++ assimp/tools/assimp_cmd/CMakeLists.txt
-@@ -46,7 +46,6 @@
- LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
- 
- ADD_EXECUTABLE( assimp_cmd
--  assimp_cmd.rc
-   CompareDump.cpp
-   ImageExtractor.cpp
-   Main.cpp
---- assimp.orig/code/IFCLoader.cpp
-+++ assimp/code/IFCLoader.cpp
-@@ -51,7 +51,7 @@
- #include <tuple>
- 
- #ifndef ASSIMP_BUILD_NO_COMPRESSED_IFC
--#   include <contrib/unzip/unzip.h>
-+#   include <unzip.h>
- #endif
- 
- #include "IFCLoader.h"
---- assimp.orig/code/Q3BSPZipArchive.h
-+++ assimp/code/Q3BSPZipArchive.h
-@@ -41,7 +41,7 @@
- #ifndef AI_Q3BSP_ZIPARCHIVE_H_INC
- #define AI_Q3BSP_ZIPARCHIVE_H_INC
- 
--#include <contrib/unzip/unzip.h>
-+#include <unzip.h>
- #include <assimp/IOStream.hpp>
- #include <assimp/IOSystem.hpp>
- #include <vector>
---- assimp.orig/code/D3MFImporter.cpp
-+++ assimp/code/D3MFImporter.cpp
-@@ -57,7 +57,7 @@
+ code/D3MFImporter.cpp           | 2 +-
+ code/D3MFOpcPackage.cpp         | 2 +-
+ code/IFCLoader.cpp              | 2 +-
+ code/Q3BSPZipArchive.h          | 2 +-
+ tools/assimp_cmd/CMakeLists.txt | 1 -
+ 5 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/code/D3MFImporter.cpp b/code/D3MFImporter.cpp
+index 372416d..e683966 100644
+--- a/code/D3MFImporter.cpp
++++ b/code/D3MFImporter.cpp
+@@ -57,7 +57,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #include <memory>
  
  #include "D3MFOpcPackage.h"
@@ -48,9 +27,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #include "irrXMLWrapper.h"
  #include "3MFXmlTags.h"
  
---- assimp.orig/code/D3MFOpcPackage.cpp
-+++ assimp/code/D3MFOpcPackage.cpp
-@@ -55,7 +55,7 @@
+diff --git a/code/D3MFOpcPackage.cpp b/code/D3MFOpcPackage.cpp
+index 49143fe..0ae53ff 100644
+--- a/code/D3MFOpcPackage.cpp
++++ b/code/D3MFOpcPackage.cpp
+@@ -55,7 +55,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #include <map>
  #include <algorithm>
  #include <cassert>
@@ -59,3 +40,41 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  #include "3MFXmlTags.h"
  
  namespace Assimp {
+diff --git a/code/IFCLoader.cpp b/code/IFCLoader.cpp
+index 85382d4..f82ee8d 100644
+--- a/code/IFCLoader.cpp
++++ b/code/IFCLoader.cpp
+@@ -51,7 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #include <tuple>
+ 
+ #ifndef ASSIMP_BUILD_NO_COMPRESSED_IFC
+-#   include <contrib/unzip/unzip.h>
++#   include <unzip.h>
+ #endif
+ 
+ #include "IFCLoader.h"
+diff --git a/code/Q3BSPZipArchive.h b/code/Q3BSPZipArchive.h
+index 5430bac..9e62c75 100644
+--- a/code/Q3BSPZipArchive.h
++++ b/code/Q3BSPZipArchive.h
+@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ #ifndef AI_Q3BSP_ZIPARCHIVE_H_INC
+ #define AI_Q3BSP_ZIPARCHIVE_H_INC
+ 
+-#include <contrib/unzip/unzip.h>
++#include <unzip.h>
+ #include <assimp/IOStream.hpp>
+ #include <assimp/IOSystem.hpp>
+ #include <vector>
+diff --git a/tools/assimp_cmd/CMakeLists.txt b/tools/assimp_cmd/CMakeLists.txt
+index cb78942..3872aa6 100644
+--- a/tools/assimp_cmd/CMakeLists.txt
++++ b/tools/assimp_cmd/CMakeLists.txt
+@@ -46,7 +46,6 @@ INCLUDE_DIRECTORIES(
+ LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
+ 
+ ADD_EXECUTABLE( assimp_cmd
+-  assimp_cmd.rc
+   CompareDump.cpp
+   ImageExtractor.cpp
+   Main.cpp

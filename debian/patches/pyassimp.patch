@@ -1,14 +1,24 @@
-Author: IOhannes m zmölnig
-Description: simple dylib loading by using ctypes functionality
- simplified original (complicated and somewhat broken) dylib loading
- functionality with code suggested by Jakub Wilk.
- This has not been forwarded (yet) to upstream, as the fix will not
- work on platforms such as w32
+From: =?utf-8?q?=22IOhannes_m_zm=C3=B6lnig_=28Debian/GNU=29=22?=
+ <umlaeute@debian.org>
+Date: Tue, 23 Oct 2018 21:49:33 +0200
+Subject: simple dylib loading by using ctypes functionality
+
+simplified original (complicated and somewhat broken) dylib loading
+functionality with code suggested by Jakub Wilk.
+This has not been forwarded (yet) to upstream, as the fix will not
+work on platforms such as w32
 Forwarded: no
 Last-Updated: 2015-08-10
---- assimp.orig/port/PyAssimp/pyassimp/helper.py
-+++ assimp/port/PyAssimp/pyassimp/helper.py
-@@ -7,7 +7,7 @@
+---
+ port/PyAssimp/pyassimp/helper.py | 126 +++++----------------------------------
+ port/PyAssimp/setup.py           |   2 -
+ 2 files changed, 14 insertions(+), 114 deletions(-)
+
+diff --git a/port/PyAssimp/pyassimp/helper.py b/port/PyAssimp/pyassimp/helper.py
+index 85bb53a..031ec54 100644
+--- a/port/PyAssimp/pyassimp/helper.py
++++ b/port/PyAssimp/pyassimp/helper.py
+@@ -7,7 +7,7 @@ Some fancy helper functions.
  import os
  import ctypes
  from ctypes import POINTER
@@ -17,7 +27,7 @@ Last-Updated: 2015-08-10
  
  from distutils.sysconfig import get_python_lib
  import re
-@@ -20,42 +20,6 @@
+@@ -20,42 +20,6 @@ import logging;logger = logging.getLogger("pyassimp")
  
  from .errors import AssimpError
  
@@ -60,7 +70,7 @@ Last-Updated: 2015-08-10
  def vec2tuple(x):
      """ Converts a VECTOR3D to a Tuple """
      return (x.x, x.y, x.z)
-@@ -161,43 +125,6 @@
+@@ -161,43 +125,6 @@ def get_bounding_box_for_node(node, bb_min, bb_max, transformation):
  
      return bb_min, bb_max
  
@@ -104,7 +114,7 @@ Last-Updated: 2015-08-10
  def search_library():
      '''
      Loads the assimp library.
-@@ -209,8 +136,6 @@
+@@ -209,8 +136,6 @@ def search_library():
                       release function,
                       dll)
      '''
@@ -113,7 +123,7 @@ Last-Updated: 2015-08-10
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -218,46 +143,23 @@
+@@ -218,46 +143,23 @@ def search_library():
      except AttributeError:
          pass
  
@@ -173,9 +183,11 @@ Last-Updated: 2015-08-10
  
  def hasattr_silent(object, name):
      """
---- assimp.orig/port/PyAssimp/setup.py
-+++ assimp/port/PyAssimp/setup.py
-@@ -9,8 +9,6 @@
+diff --git a/port/PyAssimp/setup.py b/port/PyAssimp/setup.py
+index 26cf9b4..b71a1bf 100644
+--- a/port/PyAssimp/setup.py
++++ b/port/PyAssimp/setup.py
+@@ -9,8 +9,6 @@ setup(name='pyassimp',
        url='https://github.com/assimp/assimp',
        packages=['pyassimp'],
        data_files=[

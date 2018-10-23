@@ -1,10 +1,20 @@
-Author: IOhannes m zmölnig
-Description: removed calls to HHC (only available on w32)
- and install into tmp-directories (make 'clean' target easier)
+From: =?utf-8?q?=22IOhannes_m_zm=C3=B6lnig_=28Debian/GNU=29=22?=
+ <umlaeute@debian.org>
+Date: Tue, 23 Oct 2018 21:49:33 +0200
+Subject: removed calls to HHC (only available on w32)
+
+and install into tmp-directories (make 'clean' target easier)
 Last-Updated: 2015-07-25
---- assimp.orig/doc/Doxyfile.in
-+++ assimp/doc/Doxyfile.in
-@@ -1066,7 +1066,6 @@
+---
+ doc/Doxyfile.in  | 1 -
+ doc/Doxyfile_Cmd | 3 +--
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/doc/Doxyfile.in b/doc/Doxyfile.in
+index ffe39f9..7ae8d0d 100644
+--- a/doc/Doxyfile.in
++++ b/doc/Doxyfile.in
+@@ -1066,7 +1066,6 @@ CHM_FILE               = AssimpDoc.chm
  # the HTML help compiler (hhc.exe). If non-empty doxygen will try to run 
  # the HTML help compiler on the generated index.hhp.
  
@@ -12,9 +22,11 @@ Last-Updated: 2015-07-25
  
  # If the GENERATE_HTMLHELP tag is set to YES, the GENERATE_CHI flag 
  # controls if a separate .chi index file is generated (YES) or that 
---- assimp.orig/doc/Doxyfile_Cmd
-+++ assimp/doc/Doxyfile_Cmd
-@@ -58,7 +58,7 @@
+diff --git a/doc/Doxyfile_Cmd b/doc/Doxyfile_Cmd
+index f0a56e7..f440aa1 100644
+--- a/doc/Doxyfile_Cmd
++++ b/doc/Doxyfile_Cmd
+@@ -58,7 +58,7 @@ PROJECT_LOGO           =
  # entered, it will be relative to the location where doxygen was started. If
  # left blank the current directory will be used.
  
@@ -23,7 +35,7 @@ Last-Updated: 2015-07-25
  
  # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 4096 sub-
  # directories (in 2 levels) under the output directory of each output format and
-@@ -1281,7 +1281,6 @@
+@@ -1281,7 +1281,6 @@ CHM_FILE               = AssimpCmdDoc.chm
  # The file has to be specified with full path.
  # This tag requires that the tag GENERATE_HTMLHELP is set to YES.
  
