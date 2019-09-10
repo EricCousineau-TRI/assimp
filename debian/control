@@ -16,7 +16,6 @@ Build-Depends:
  zlib1g-dev | libz-dev,
  libminizip-dev,
  doxygen,
- python-all,
  python3-all,
 Rules-Requires-Root: no
 Vcs-Git: https://salsa.debian.org/debian/assimp.git
@@ -94,22 +93,6 @@ Description: 3D model import library (utilities)
  .
  This package contains additional commandline utilities (currently only
  'assimp') to interact with 3D models.
-
-Package: python-pyassimp
-Architecture: all
-Section: python
-Depends: ${python:Depends},
- ${misc:Depends},
- libassimp4 (>= ${source:Version}),
- libassimp4(<< ${source:Upstream-Version}+1~)
-Description: 3D model import library (Python2 bindings)
- Assimp is a library to import various well-known 3D model formats ("assets") in
- a uniform manner.
- Assimp aims at providing a full asset conversion pipeline for use in game
- engines / realtime rendering systems of any kind but is not limited to this
- audience.
- .
- This package provides Python bindings to the Assimp library.
 
 Package: python3-pyassimp
 Architecture: all
