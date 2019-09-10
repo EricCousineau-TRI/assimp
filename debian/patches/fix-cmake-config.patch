@@ -1,0 +1,27 @@
+Description: Use CMAKE_INSTALL_PREFIX as ASSIMP_ROOT_DIR
+ Since the ASSIMP_LIB_INSTALL_DIR where this CMake config file is
+ installed to may contain multiple nested directories, we should not use
+ it to back-calculate the location of the ASSIMP_ROOT_DIR unless we can
+ take the directory depth into account. Instead use the
+ CMAKE_INSTALL_PREFIX as the ASSIMP_ROOT_DIR at configure-time.
+Author: Steven! Ragnarök
+Origin: upstream
+Bug: https://github.com/assimp/assimp/issues/1914
+Applied-Upstream: 4ee34fbce6c7543a32cff3cf4152c5d46c50a805
+Last-Update: 2019-09-10
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/assimp-config.cmake.in
++++ assimp/assimp-config.cmake.in
+@@ -10,10 +10,7 @@
+ # ASSIMP_LIBRARY_DIRS - link directories
+ # ASSIMP_LIBRARIES - libraries to link plugins with
+ # ASSIMP_Boost_VERSION - the boost version assimp was compiled with
+-get_filename_component(_PREFIX "${CMAKE_CURRENT_LIST_FILE}" PATH)
+-get_filename_component(_PREFIX "${_PREFIX}" PATH)
+-get_filename_component(_PREFIX "${_PREFIX}" PATH)
+-get_filename_component(ASSIMP_ROOT_DIR "${_PREFIX}" PATH)
++get_filename_component(ASSIMP_ROOT_DIR "@CMAKE_INSTALL_PREFIX@" REALPATH)
+ 
+ if( MSVC )
+   # in order to prevent DLL hell, each of the DLLs have to be suffixed with the major version and msvc prefix
