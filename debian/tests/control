@@ -1,5 +1,2 @@
-Tests: import2
-Depends: python-pyassimp
-
 Tests: import3
 Depends: python3-pyassimp
