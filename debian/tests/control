@@ -1,2 +1,3 @@
-Tests: import3
-Depends: python3-pyassimp
+Tests: quicktest.py
+Depends: python3-pyassimp,
+ vtkdata, cube2-data, libcamitk4-data, morse-simulator-data,
