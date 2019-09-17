@@ -1,3 +1,11 @@
+assimp (4.1.0~dfsg-7) unstable; urgency=medium
+
+  * autopkgtest fixes
+    * Drop autpkgtest for Python2
+    * Replace smoketest by a real one that loads actual models
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 17 Sep 2019 16:41:53 +0200
+
 assimp (4.1.0~dfsg-6) unstable; urgency=medium
 
   * Drop "python-pyassimp" as part of the Python2 removal in bullseye
