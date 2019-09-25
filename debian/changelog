@@ -1,3 +1,9 @@
+assimp (5.0.0~ds0-1) UNRELEASED; urgency=medium
+
+  * 
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Wed, 25 Sep 2019 10:49:51 +0200
+
 assimp (4.1.0~dfsg-7) unstable; urgency=medium
 
   * autopkgtest fixes
