@@ -3,14 +3,23 @@
 		ai*;
 		extern "C++" {
                  Assimp::Base*;
+                 Assimp::DefaultIO*;
                  Assimp::IO*;
                  Assimp::*Logger*;
+                 Assimp::LogStream*;
                  Assimp::Importer*;
                  Assimp::Exporter*;
                  Assimp::ExportProperties*;
-                 Assimp::LogStream*;
                  Assimp::ProgressHandler*;
                  Assimp::Intern*;
+                 Assimp::*SpatialSort*;
+                 Assimp::CommentRemover*;
+                 Assimp::Subdivider*;
+                 Assimp::StandardShapes*;
+                 Assimp::SceneCombiner*;
+                 Assimp::Bitmap*;
+                 Assimp::SkeletonMeshBuilder*;
+                 Assimp::ai*;
                  ai*;
 		};
                 /* g++ version mangling prefixes for 'typeinfo' */
