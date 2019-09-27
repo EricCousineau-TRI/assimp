@@ -13,6 +13,7 @@ Build-Depends:
  pkg-config,
  g++ (>=4:5.2),
  libboost-dev,
+ libirrlicht-dev,
  zlib1g-dev | libz-dev,
  libminizip-dev,
  doxygen,
