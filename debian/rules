@@ -44,7 +44,6 @@ override_dh_auto_configure:
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_ASSIMP_SAMPLES=OFF \
 		-DASSIMP_BUILD_TESTS=OFF \
-		-DSYSTEM_IRRXML=ON \
 		-DBUILD_DOCS=ON \
 	        -DCMAKE_DEBUG_POSTFIX='' \
 		-DASSIMP_ENABLE_BOOST_WORKAROUND=OFF
@@ -64,6 +63,8 @@ override_dh_auto_install:
 	dh_auto_install
 	dh_auto_install --buildsystem=pybuild -- \
 		-d port/PyAssimp/
+	# IrrXML is not packaged for Debian, so drop the wrapper
+	find debian/*/usr -name irrXMLWrapper.h -delete
 
 override_dh_auto_clean:
 	dh_auto_clean
