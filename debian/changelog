@@ -1,8 +1,17 @@
-assimp (5.0.0~ds0-1) UNRELEASED; urgency=medium
+assimp (5.0.0~ds0-1~exp1) experimental; urgency=medium
 
-  * 
+  * New upstream version 5.0.0~ds0
+  * Refresh patches and drop those applied upstream
+  * Added more symbols to libassimp.ver
+    * Drop soname-version from version-script
+  * Bump soname from v4 to v5
+  * Keep BSD-licensed data
+  * Update d/watch
+  * Refresh d/copyright
+    * Regenerate d/copyright_hints
+    * Drop B-D on 'licensecheck'
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Wed, 25 Sep 2019 10:49:51 +0200
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Fri, 27 Sep 2019 16:22:00 +0200
 
 assimp (4.1.0~dfsg-7) unstable; urgency=medium
 
