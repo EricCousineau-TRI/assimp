@@ -11,7 +11,7 @@ Files-Excluded:
  *.lib
 
 Files: *
-Copyright: 2006-2017, ASSIMP Development Team
+Copyright: 2006-2019, ASSIMP Development Team
 License: BSD-3-clause
 
 Files: include/assimp/Compiler/pstdint.h
@@ -32,9 +32,21 @@ Copyright: 2004-2008, Paul Hsieh.
   2006-2017, assimp team
 License: BSD-3-clause
  
-Files: code/CreateAnimMesh.cpp
+Files: code/Common/CreateAnimMesh.cpp
 Copyright: 2006-2012, assimp team
   2016, The Qt Company Ltd.
+License: BSD-3-clause
+
+Files: code/Assjson/*
+Copyright: 2011, Alexander C. Gessler
+License: BSD-3-clause
+
+Files: code/Assjson/cencode.*
+Copyright: NONE
+License: public-domain
+
+Files: code/MDC/MDCNormalTable.h
+Copyright: 2002, Randy Reddig & seaw0lf
 License: BSD-3-clause
 
 Files: cmake-modules/Coveralls*
@@ -95,13 +107,14 @@ License: public-domain
 License-Grant:
  This is free and unencumbered software released into the public domain
 
+Files: contrib/zip/cmake/asan-wrapper
+Copyright: 2013, Matthew Arsenault
+ 2015-2016 RWTH Aachen University, Federal Republic of Germany
+License: Expat
+
 Files: scripts/AppVeyor/mtime_cache
 Copyright: 2016, Borislav Stanimirov
 License: Expat
-
-Files: samples/DevIL/*
-Copyright: 2000-2009, Denton Woods et al.
-License: LGPL-2.1+
 
 Files: tools/assimp_cmd/generic_inserter.hpp
 Copyright: 2006-2016, ASSIMP Development Team
