@@ -130,6 +130,10 @@ License-Grant:
  License.  <http://opensource.org/licenses/MIT>.
 License: Expat
 
+Files: test/models/glTF2/glTF-Asset-Generator/*
+Copyright: 2017, Gary Hsu
+License: Expat
+
 Files: debian/*
 Copyright: 2011-2017, IOhannes m zmölnig <umlaeute@debian.org>
 License: GPL-3+
