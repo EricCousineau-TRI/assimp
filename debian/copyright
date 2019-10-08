@@ -9,8 +9,8 @@ Files-Excluded:
  *.chm
  *.pdf
  test/models-nonbsd/*
- contrip/unzip/*
- contrip/zlib/*
+ contrib/unzip/*
+ contrib/zlib/*
 
 Files: *
 Copyright: 2006-2019, ASSIMP Development Team
