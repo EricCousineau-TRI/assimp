@@ -1,3 +1,16 @@
+assimp (5.0.0~ds1-1) experimental; urgency=medium
+
+  * New upstream version 5.0.0~ds1
+  * Drop filtering in d/gbp.conf in favour of d/copyright
+  * Add assimp-testmodels package for 3D models used for testing
+  * Add own testfiles to autopktest
+  * Update d/copyright
+    * Exclude more binaries from licensecheck target
+    * Regenerate d/copyright_hints
+  * Bump standards version to 4.4.1
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 08 Oct 2019 13:02:43 +0200
+
 assimp (5.0.0~ds0-1~exp1) experimental; urgency=medium
 
   * New upstream version 5.0.0~ds0
