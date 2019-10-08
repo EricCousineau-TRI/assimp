@@ -760,6 +760,17 @@ Files: Build.md
  samples/SimpleTexturedOpenGL/SimpleTexturedOpenGL/src/model_loading.cpp
  scripts/StepImporter/genentitylist.sh
  scripts/adjust_header_paths.sh
+ test/models/AC/TestFormatDetection
+ test/models/AMF/README
+ test/models/ASE/TestFormatDetection
+ test/models/DXF/lineTest
+ test/models/HMP/formatDetection
+ test/models/LWO/LWO2/formatDetection
+ test/models/LWO/LWOB/formatDetection
+ test/models/OFF/formatDetection
+ test/models/STL/formatDetection
+ test/models/X/TestFormatDetection
+ test/models/glTF2/glTF-Asset-Generator/Mesh_PrimitiveMode/README.md
  test/other/streamload.py
  test/unit/CCompilerTest.c
  test/unit/Main.cpp
@@ -1138,6 +1149,11 @@ License: BSD~unspecified
 
 Files: scripts/AppVeyor/mtime_cache
 Copyright: 2016, Borislav Stanimirov
+License: Expat
+ FIXME
+
+Files: test/models/glTF2/glTF-Asset-Generator/LICENSE
+Copyright: 2017, Gary Hsu
 License: Expat
  FIXME
 
