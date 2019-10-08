@@ -3,12 +3,14 @@ Upstream-Name: assimp
 Upstream-Contact: assimp-discussions@lists.sourceforge.net
 Source: https://github.com/assimp/assimp
 Files-Excluded:
- *.pdf
- test/models-nonbsd/*
+ .git*
  resource.h
  *.rc
- *.dll
- *.lib
+ *.chm
+ *.pdf
+ test/models-nonbsd/*
+ contrip/unzip/*
+ contrip/zlib/*
 
 Files: *
 Copyright: 2006-2019, ASSIMP Development Team
