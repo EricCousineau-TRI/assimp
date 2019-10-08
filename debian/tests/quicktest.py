@@ -33,6 +33,7 @@ extensions = [
     ".blend",
 ]
 datadirs = [
+    "/usr/share/assimp/models/",
     "/usr/share/VTKData/",  # 3DS,OBJ,PLY,STL
     "/usr/share/games/cube2/packages/models",  # OBJ,MD5ANIM,MD5MESH
     "/usr/share/camitk-*/testdata/",  # OBJ,STL,OFF
