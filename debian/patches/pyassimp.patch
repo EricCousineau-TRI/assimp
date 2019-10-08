@@ -118,7 +118,7 @@ Last-Updated: 2015-08-10
  
      # silence 'DLL not found' message boxes on win
      try:
-@@ -218,52 +144,22 @@
+@@ -218,52 +144,24 @@
      except AttributeError:
          pass
  
@@ -155,16 +155,18 @@ Last-Updated: 2015-08-10
 -
 -    if not candidates:
 -        # no library found
-+    libassimp = 'libassimp.so.4'
+-        raise AssimpError("assimp library not found")
++    libassimp = 'libassimp.so.5'
 +    LIBASSIMP = ctypes.CDLL(libassimp)
 +    try:
 +        load = LIBASSIMP.aiImportFile
 +        load_mem = LIBASSIMP.aiImportFileFromMemory
 +        export = LIBASSIMP.aiExportScene
++        export2blob = LIBASSIMP.aiExportSceneToBlob
 +        release = LIBASSIMP.aiReleaseImport
 +    except AttributeError:
 +        # OK, this is a library, but it does not have the functions we need
-         raise AssimpError("assimp library not found")
++        raise AssimpError("assimp library '%s' not found" % (libassimp,))
      else:
 -        # get the newest library_path
 -        candidates = map(lambda x: (os.lstat(x[0])[-2], x), candidates)
@@ -174,13 +176,15 @@ Last-Updated: 2015-08-10
 -        # XXX: if there are 1000 dll/so files containing 'assimp'
 -        # in their name, do we have all of them in our address
 -        # space now until gc kicks in?
-+        # Library found!
-+        from . import structs
-+        load.restype = POINTER(structs.Scene)
-+    return(load, load_mem, export, release, LIBASSIMP)
- 
+-
 -        # XXX: take version postfix of the .so on linux?
 -        return res[1:]
++        # Library found!
++        from . import structs
++        load.restype = ctypes.POINTER(structs.Scene)
++        load_mem.restype = ctypes.POINTER(structs.Scene)
++        export2blob.restype = ctypes.POINTER(structs.ExportDataBlob)
++    return(load, load_mem, export, export2blob, release, LIBASSIMP)
  
  def hasattr_silent(object, name):
      """
