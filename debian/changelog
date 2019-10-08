@@ -1,4 +1,4 @@
-assimp (5.0.0~ds1-1) experimental; urgency=medium
+assimp (5.0.0~ds1-1~exp1) experimental; urgency=medium
 
   * New upstream version 5.0.0~ds1
   * Drop filtering in d/gbp.conf in favour of d/copyright
