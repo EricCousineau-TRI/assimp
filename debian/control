@@ -13,6 +13,7 @@ Build-Depends:
  g++ (>=4:5.2),
  libboost-dev,
  libminizip-dev,
+ libstb-dev,
  libutfcpp-dev,
  zlib1g-dev | libz-dev,
  python3-all,
