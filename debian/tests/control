@@ -1,3 +1,7 @@
+Test-Command: find /usr/share/assimp/models/ -type f -exec ./debian/tests/assimp-info {} +
+Depends: assimp-utils,
+ assimp-testmodels,
+
 Tests: quicktest.py
 Depends: python3-pyassimp,
  assimp-testmodels,

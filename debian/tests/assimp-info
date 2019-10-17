@@ -1,0 +1,24 @@
+#!/bin/sh
+
+runtest() {
+   echo "===================================================="
+   echo "> Trying to open '$1' with assimp"
+   assimp info "$1" 2>&1 | sed -e '/^ *$/d'
+   ret=$?
+   if [ "x${ret}" = "x5" ]; then
+      # assimp failed to open the file, but handled it gracefully
+      ret=0
+   fi
+   if [ "x${ret}" != "x0" ]; then
+      echo "> assimp info '$1' returned $ret"
+      retval=1
+   fi
+   echo ""
+}
+
+
+retval=0
+for f in "$@"; do
+  runtest "$f"
+done
+exit $retval
