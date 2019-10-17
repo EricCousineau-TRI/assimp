@@ -4,10 +4,10 @@ Upstream-Contact: assimp-discussions@lists.sourceforge.net
 Source: https://github.com/assimp/assimp
 Files-Excluded:
  .git*
- resource.h
  *.rc
  *.chm
  *.pdf
+ */resource.h
  test/models-nonbsd/*
  contrib/unzip/*
  contrib/zlib/*
