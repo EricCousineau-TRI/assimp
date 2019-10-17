@@ -1,5 +1,5 @@
-Description: Make sure to include utf8.h from Debians libutfcpp package
- rather than included version
+Description: Make sure to include utf8.h from Debian
+ using libutfcpp-dev, rather than the included version
 Author: IOhannes m zmölnig
 Origin: Debian
 Forwarded: no
