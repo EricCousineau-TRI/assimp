@@ -16,7 +16,7 @@ Forwarded: not-needed (Debian specific)
 
 --- assimp.orig/tools/assimp_cmd/CMakeLists.txt
 +++ assimp/tools/assimp_cmd/CMakeLists.txt
-@@ -48,7 +48,6 @@
+@@ -48,12 +48,10 @@
  LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
  
  ADD_EXECUTABLE( assimp_cmd
@@ -24,3 +24,8 @@ Forwarded: not-needed (Debian specific)
    CompareDump.cpp
    ImageExtractor.cpp
    Main.cpp
+   Main.h
+-  resource.h
+   WriteDumb.cpp
+   Info.cpp
+   Export.cpp
