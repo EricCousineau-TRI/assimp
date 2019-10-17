@@ -78,10 +78,6 @@ Files: contrib/irrXML/*
 Copyright: 2002-2007, Nikolaus Gebhardt
 License: zlib/libpng
 
-Files: contrib/utf8cpp/*
-Copyright: 2006, Nemanja Trifunovic
-License: BSL-1
-
 Files: contrib/poly2tri/*
 Copyright: 2009-2010, Poly2Tri Contributors
 License: BSD-3-clause
