@@ -12,10 +12,10 @@ Build-Depends:
  pkg-config,
  g++ (>=4:5.2),
  libboost-dev,
- zlib1g-dev | libz-dev,
  libminizip-dev,
- doxygen,
+ zlib1g-dev | libz-dev,
  python3-all,
+ doxygen,
 Rules-Requires-Root: no
 Vcs-Git: https://salsa.debian.org/debian/assimp.git
 Vcs-Browser: https://salsa.debian.org/debian/assimp
