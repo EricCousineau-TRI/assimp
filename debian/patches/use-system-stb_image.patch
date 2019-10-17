@@ -1,0 +1,18 @@
+Description: Use system provided STB image loading
+Author: IOhannes m zmölnig
+Origin: Debian
+Forwarded: not-needed
+Last-Update: 2019-10-17
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/samples/SimpleTexturedOpenGL/SimpleTexturedOpenGL/src/model_loading.cpp
++++ assimp/samples/SimpleTexturedOpenGL/SimpleTexturedOpenGL/src/model_loading.cpp
+@@ -19,7 +19,7 @@
+ #include <GL/glu.h>
+ 
+ #define STB_IMAGE_IMPLEMENTATION
+-#include "contrib/stb_image/stb_image.h"
++#include <stb/stb_image.h>
+ 
+ #include <fstream>
+ 
