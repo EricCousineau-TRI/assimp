@@ -12,6 +12,7 @@ Files-Excluded:
  contrib/unzip/*
  contrib/zlib/*
  contrib/utf8cpp/*
+ contrib/stb_image/*
 
 Files: *
 Copyright: 2006-2019, ASSIMP Development Team
