@@ -4,5 +4,4 @@ Depends: assimp-utils,
 
 Tests: quicktest.py
 Depends: python3-pyassimp,
- assimp-testmodels,
  vtkdata, cube2-data, libcamitk4-data, morse-simulator-data,
