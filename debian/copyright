@@ -11,6 +11,7 @@ Files-Excluded:
  test/models-nonbsd/*
  contrib/unzip/*
  contrib/zlib/*
+ contrib/utf8cpp/*
 
 Files: *
 Copyright: 2006-2019, ASSIMP Development Team
