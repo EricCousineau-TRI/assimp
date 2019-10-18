@@ -13,7 +13,16 @@ Last-Update: 2019-10-18
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- assimp.orig/assimpTargets-release.cmake.in
 +++ assimp/assimpTargets-release.cmake.in
-@@ -66,17 +66,17 @@
+@@ -2,6 +2,8 @@
+ # Generated CMake target import file for configuration "Release".
+ #----------------------------------------------------------------
+ 
++get_filename_component(ASSIMP_ROOT_DIR "@CMAKE_INSTALL_PREFIX@" REALPATH)
++
+ # Commands may need to know the format version.
+ set(CMAKE_IMPORT_FILE_VERSION 1)
+ 
+@@ -66,25 +68,23 @@
      set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")
      set_target_properties(assimp::assimp PROPERTIES
        IMPORTED_SONAME_RELEASE "${sharedLibraryName}"
@@ -35,9 +44,25 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
    endif()
  endif()
  
+ # Commands beyond this point should not need to know the version.
+ set(CMAKE_IMPORT_FILE_VERSION)
+ 
+-get_filename_component(ASSIMP_ROOT_DIR "@CMAKE_INSTALL_PREFIX@" REALPATH)
+-
+ set( ASSIMP_CXX_FLAGS ) # dynamically linked library
+ set( ASSIMP_LINK_FLAGS "" )
+ set( ASSIMP_LIBRARY_DIRS "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@")
 --- assimp.orig/assimpTargets-debug.cmake.in
 +++ assimp/assimpTargets-debug.cmake.in
-@@ -66,17 +66,17 @@
+@@ -2,6 +2,7 @@
+ # Generated CMake target import file for configuration "Debug".
+ #----------------------------------------------------------------
+ 
++get_filename_component(ASSIMP_ROOT_DIR "@CMAKE_INSTALL_PREFIX@" REALPATH)
+ # Commands may need to know the format version.
+ set(CMAKE_IMPORT_FILE_VERSION 1)
+ 
+@@ -66,17 +67,17 @@
      set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")
      set_target_properties(assimp::assimp PROPERTIES
        IMPORTED_SONAME_DEBUG "${sharedLibraryName}"
@@ -59,3 +84,11 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
    endif()
  endif()
  
+@@ -86,7 +87,6 @@
+ # Commands beyond this point should not need to know the version.
+ set(CMAKE_IMPORT_FILE_VERSION)
+ 
+-get_filename_component(ASSIMP_ROOT_DIR "@CMAKE_INSTALL_PREFIX@" REALPATH)
+ set( ASSIMP_CXX_FLAGS ) # dynamically linked library
+ set( ASSIMP_LINK_FLAGS "" )
+ set( ASSIMP_LIBRARY_DIRS "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@")
