@@ -1,3 +1,21 @@
+assimp (5.0.0~ds2-1) UNRELEASED; urgency=medium
+
+  * Refresh pyassimp patch to make it actually work
+  * Add patch for CMake snippets to find libassimp.so.N
+  * Use more system-provided libraries
+    * B-D on libutfcpp-dev, libstb-dev instead
+    * Patch sources to use the system-provided headers
+  * Fix install-path for test models
+  * Add an autopkgtest for the "assimp" utility
+  * For now, don't run pysassimp autopkgtests on assimp-testmodels
+  * Update d/copyright
+    * Exclude {utf8cpp,stb_image} from contrib/
+    * Remove copyright info for excluded utf8cpp
+    * Exclude (generated) resource.h files
+  * Fix spelling of "assimp" in d/changelog
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 17 Oct 2019 13:20:44 +0200
+
 assimp (5.0.0~ds1-1~exp1) experimental; urgency=medium
 
   * New upstream version 5.0.0~ds1
