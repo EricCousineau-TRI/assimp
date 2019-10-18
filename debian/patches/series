@@ -1,5 +1,5 @@
-doxygen.patch
 drop-stripped-sources.patch
-pyassimp.patch
 use-system-utf8cpp.patch
 use-system-stb_image.patch
+pyassimp.patch
+doxygen.patch
