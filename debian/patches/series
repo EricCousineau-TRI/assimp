@@ -1,3 +1,4 @@
+cmake.patch
 drop-stripped-sources.patch
 use-system-utf8cpp.patch
 use-system-stb_image.patch

@@ -1,0 +1,61 @@
+Description: Fix search-location for libassimp.so.X
+ upstream's CMake snippet for 3rd-party consumers attempts to
+ guess the location of the libassimp.so.X file, but fails badly
+ (resulting in something like /usr/lib/lib/libassimp.so.5 instead of
+ /usr/lib/x86_64-linux-gnu/libassimp.so.5).
+ This patch uses the @ASSIMP_LIB_INSTALL_DIR@ replacement instead of
+ on-the-fly calcuations.
+Author: IOhannes m zmölnig
+Origin: Debian
+Bug: https://github.com/assimp/assimp/issues/2719
+Last-Update: 2019-10-18
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/assimpTargets-release.cmake.in
++++ assimp/assimpTargets-release.cmake.in
+@@ -66,17 +66,17 @@
+     set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")
+     set_target_properties(assimp::assimp PROPERTIES
+       IMPORTED_SONAME_RELEASE "${sharedLibraryName}"
+-      IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/${sharedLibraryName}"
++      IMPORTED_LOCATION_RELEASE "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${sharedLibraryName}"
+     )
+     list(APPEND _IMPORT_CHECK_TARGETS assimp::assimp )
+-    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${_IMPORT_PREFIX}/lib/${sharedLibraryName}" )
++    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${sharedLibraryName}" )
+   else()
+     set(staticLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_STATIC_LIBRARY_SUFFIX@")
+     set_target_properties(assimp::assimp PROPERTIES
+-      IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/${staticLibraryName}"
++      IMPORTED_LOCATION_RELEASE "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${staticLibraryName}"
+     )
+     list(APPEND _IMPORT_CHECK_TARGETS assimp::assimp )
+-    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${_IMPORT_PREFIX}/lib/${staticLibraryName}" )
++    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${staticLibraryName}" )
+   endif()
+ endif()
+ 
+--- assimp.orig/assimpTargets-debug.cmake.in
++++ assimp/assimpTargets-debug.cmake.in
+@@ -66,17 +66,17 @@
+     set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")
+     set_target_properties(assimp::assimp PROPERTIES
+       IMPORTED_SONAME_DEBUG "${sharedLibraryName}"
+-      IMPORTED_LOCATION_DEBUG "${_IMPORT_PREFIX}/lib/${sharedLibraryName}"
++      IMPORTED_LOCATION_DEBUG "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${sharedLibraryName}"
+     )
+     list(APPEND _IMPORT_CHECK_TARGETS assimp::assimp )
+-    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${_IMPORT_PREFIX}/lib/${sharedLibraryName}" )
++    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${sharedLibraryName}" )
+   else()
+     set(staticLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_DEBUG_POSTFIX@@CMAKE_STATIC_LIBRARY_SUFFIX@")
+     set_target_properties(assimp::assimp PROPERTIES
+-      IMPORTED_LOCATION_DEBUG "${_IMPORT_PREFIX}/lib/${staticLibraryName}"
++      IMPORTED_LOCATION_DEBUG "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${staticLibraryName}"
+     )
+     list(APPEND _IMPORT_CHECK_TARGETS assimp::assimp )
+-    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${_IMPORT_PREFIX}/lib/${staticLibraryName}" )
++    list(APPEND _IMPORT_CHECK_FILES_FOR_assimp::assimp "${ASSIMP_ROOT_DIR}/@ASSIMP_LIB_INSTALL_DIR@/${staticLibraryName}" )
+   endif()
+ endif()
+ 
