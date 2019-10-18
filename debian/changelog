@@ -1,4 +1,4 @@
-assimp (5.0.0~ds2-1) UNRELEASED; urgency=medium
+assimp (5.0.0~ds2-1~exp1) experimental; urgency=medium
 
   * Refresh pyassimp patch to make it actually work
   * Add patch for CMake snippets to find libassimp.so.N
@@ -14,7 +14,7 @@ assimp (5.0.0~ds2-1) UNRELEASED; urgency=medium
     * Exclude (generated) resource.h files
   * Fix spelling of "assimp" in d/changelog
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Thu, 17 Oct 2019 13:20:44 +0200
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Fri, 18 Oct 2019 11:06:22 +0200
 
 assimp (5.0.0~ds1-1~exp1) experimental; urgency=medium
 
