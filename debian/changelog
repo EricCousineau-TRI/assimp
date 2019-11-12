@@ -1,3 +1,10 @@
+assimp (5.0.0~ds2-1) unstable; urgency=medium
+
+  * Upload to unstable.
+  * Add note on repackaging in the d/changelog for 5.0.0~ds2-1~exp1
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 12 Nov 2019 10:00:21 +0100
+
 assimp (5.0.0~ds2-1~exp1) experimental; urgency=medium
 
   * Repackaged to exclude more bundled 3rd party libraries
