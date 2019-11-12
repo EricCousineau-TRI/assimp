@@ -1,5 +1,8 @@
 assimp (5.0.0~ds2-1~exp1) experimental; urgency=medium
 
+  * Repackaged to exclude more bundled 3rd party libraries
+    * utf8cpp, stb_image
+    * (generated) resource.h files
   * Refresh pyassimp patch to make it actually work
   * Add patch for CMake snippets to find libassimp.so.N
   * Use more system-provided libraries
