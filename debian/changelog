@@ -1,3 +1,13 @@
+assimp (5.0.0~ds2-2) unstable; urgency=medium
+
+  * Patch to fix struct-definition in python bindings (Closes: #944742)
+  * Amend test-suite
+    * Use our own data for running tests
+    * Skip out-of-memory test-file as it exhausts the test host's memory
+  * Fix dversionmangling in d/watch
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Sat, 07 Dec 2019 23:03:21 +0100
+
 assimp (5.0.0~ds2-1) unstable; urgency=medium
 
   * Upload to unstable.
