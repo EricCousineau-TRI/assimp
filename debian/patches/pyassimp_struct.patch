@@ -1,0 +1,19 @@
+Description: fix ctype struct definition
+ to match the struct declaration in C
+Author: IOhannes m zmölnig
+Bug: https://github.com/assimp/assimp/issues/2788
+Forwarded: https://github.com/assimp/assimp/pull/2813
+Last-Update: 2019-12-07
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/port/PyAssimp/pyassimp/structs.py
++++ assimp/port/PyAssimp/pyassimp/structs.py
+@@ -76,7 +76,7 @@
+             # Binary length of the string excluding the terminal 0. This is NOT the
+             #  logical length of strings containing UTF-8 multibyte sequences! It's
+             #  the number of bytes from the beginning of the string to its end.
+-            ("length", c_size_t),
++            ("length", c_uint32),
+             
+             # String buffer. Size limit is MAXLEN
+             ("data", c_char*MAXLEN),
