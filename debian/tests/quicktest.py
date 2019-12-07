@@ -42,6 +42,10 @@ datadirs = [
     "/usr/share/gdal/",  # DXF, but fail to load
 ]
 
+badfiles = [
+    "/usr/share/assimp/models/invalid/OutOfMemory.off",
+]
+
 
 def myprint(s=""):
     # return
@@ -137,8 +141,12 @@ def run_tests(basepaths):
                 for afile in files:
                     base, ext = os.path.splitext(afile)
                     if ext in extensions:
+                        filename = os.path.join(root, afile)
+                        if filename in badfiles:
+                            print("Skipping '%s'" % (filename,))
+                            continue
                         try:
-                            load(os.path.join(root, afile))
+                            load(filename)
                             ok += 1
                         except pyassimp.errors.AssimpError as error:
                             # Assimp error is fine; this is a controlled case.
@@ -147,7 +155,7 @@ def run_tests(basepaths):
                         except Exception:
                             print(
                                 "Error encountered while loading <%s>"
-                                % os.path.join(root, afile)
+                                % filename
                             )
                             bad += 1
     myprint("** Loaded %s models, got controlled errors for %s files" % (ok, err))
