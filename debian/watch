@@ -1,4 +1,4 @@
 # Run the "uscan" command to check for upstream updates and more.
 version=3
-opts=uversionmangle=s%(rc|a|b|c)%~$1%,dversionmangle=s%[~+](dfsg|ds)(\.[0-9]*)?$%%,oversionmangle=s%$%~ds0% \
+opts=uversionmangle=s%(rc|a|b|c)%~$1%,dversionmangle=s%[~+](dfsg|ds)((\.)?[0-9]*)?$%%,oversionmangle=s%$%~ds0% \
   https://github.com/assimp/assimp/releases .*/v?@ANY_VERSION@@ARCHIVE_EXT@
