@@ -160,7 +160,7 @@ def run_tests(basepaths):
                                 % (errtype, filename, e)
                             )
                             bad += 1
-    myprint("** Loaded %s models, got controlled errors for %s files" % (ok, err))
+    myprint("** Loaded %s models, got %s controlled errors and %s unhandled errors" % (ok, err, bad))
     return bad
 
 
