@@ -152,10 +152,12 @@ def run_tests(basepaths):
                             # Assimp error is fine; this is a controlled case.
                             myprint(error)
                             err += 1
-                        except Exception:
+                        except Exception as e:
+                            try: errtype=type(e).__name__
+                            except: errtype=""
                             print(
-                                "Error encountered while loading <%s>"
-                                % filename
+                                "Error<%s> encountered while loading '%s': %s"
+                                % (errtype, filename, e)
                             )
                             bad += 1
     myprint("** Loaded %s models, got controlled errors for %s files" % (ok, err))
