@@ -1,11 +1,16 @@
 assimp (5.0.0~ds2-3) unstable; urgency=medium
 
-  * Add patch to handle faces with variable number of vertices in PyAssimp
-    (Closes: #944742)
-  * PyAssimp autopkgtest: nicer error messages
+  * PyAssimp fixes
+    * Add patch to handle faces with variable number of vertices in PyAssimp
+      (Closes: #944742)
+    * Update patch to fix struct-definition after discovering another problem
+  * PyAssimp autopkgtest
+    * Add many more file-extensions to the pyassimp autopkgtest
+    * Add nicer error messages
+    * Gracefully handle exceptions that are not AssimpErrors
   * Declare "assimp-testmodels" package as "multi-arch: foreign"
 
- -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 09 Dec 2019 14:41:23 +0100
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Mon, 09 Dec 2019 21:03:46 +0100
 
 assimp (5.0.0~ds2-2) unstable; urgency=medium
 
