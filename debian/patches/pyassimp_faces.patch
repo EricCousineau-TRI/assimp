@@ -1,0 +1,19 @@
+Description: handle variable-length facet-indices in PyAssimp
+ numpy.array() requires each element to have the same dimension, but the face
+ indices might have varying length.
+Author: IOhannes m zmölnig
+Bug: https://github.com/assimp/assimp/issues/2817
+Last-Update: 2019-12-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- assimp.orig/port/PyAssimp/pyassimp/core.py
++++ assimp/port/PyAssimp/pyassimp/core.py
+@@ -432,7 +432,7 @@
+ 
+     # prepare faces
+     if numpy:
+-        faces = numpy.array([f.indices for f in target.faces], dtype=numpy.int32)
++        faces = numpy.array([numpy.array(f.indices, dtype=numpy.int32) for f in target.faces])
+     else:
+         faces = [f.indices for f in target.faces]
+     setattr(target, 'faces', faces)

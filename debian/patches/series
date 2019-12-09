@@ -4,4 +4,5 @@ use-system-utf8cpp.patch
 use-system-stb_image.patch
 pyassimp.patch
 pyassimp_struct.patch
+pyassimp_faces.patch
 doxygen.patch
