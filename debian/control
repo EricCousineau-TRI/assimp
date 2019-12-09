@@ -114,6 +114,7 @@ Description: 3D model import library (Python3 bindings)
 
 Package: assimp-testmodels
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends},
 Description: assimp 3D model import library (testdata)
  Assimp is a library to import various well-known 3D model formats ("assets") in
