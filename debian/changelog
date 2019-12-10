@@ -1,3 +1,12 @@
+assimp (5.0.0~ds2-4) unstable; urgency=medium
+
+  * More PyAssimp autopkgtest-fixes (Closes: #944742)
+    * Make pyassimp-testscript more useful
+    * Call pyassimp-testscript with arguments
+    * Allow pyassimp-testscript to output to stderr
+
+ -- IOhannes m zmölnig (Debian/GNU) <umlaeute@debian.org>  Tue, 10 Dec 2019 22:19:14 +0100
+
 assimp (5.0.0~ds2-3) unstable; urgency=medium
 
   * PyAssimp fixes
