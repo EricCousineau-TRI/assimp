@@ -14,6 +14,11 @@ import glob
 import pyassimp
 import pyassimp.postprocess
 
+import logging
+
+logging.basicConfig(stream=sys.stdout, format="%(message)s")
+log = logging.getLogger("PyAssimp-Test")
+
 # Valid extensions for 3D model files ('assimp listext')
 extensions = [
     ".3d",
@@ -84,67 +89,52 @@ extensions = [
     ".zae",
     ".zgl",
 ]
-datadirs = [
-    "/usr/share/assimp/models/",
-    "/usr/share/VTKData/",  # 3DS,OBJ,PLY,STL
-    "/usr/share/games/cube2/packages/models",  # OBJ,MD5ANIM,MD5MESH
-    "/usr/share/camitk-*/testdata/",  # OBJ,STL,OFF
-    "/usr/share/morse/data/",  # DAE,BLEND; there's a crashy blend-file in there!
-    "/usr/share/games/lordsawar",  # LWS, but fail to load
-    "/usr/share/gdal/",  # DXF, but fail to load
-]
 
 badfiles = [
     "/usr/share/assimp/models/invalid/OutOfMemory.off",
 ]
 
 
-def myprint(s=""):
-    # return
-    print(s)
-
-
 def recur_node(node, level=0):
-    myprint("  " + "\t" * level + "- " + str(node))
+    log.info("  " + "\t" * level + "- " + str(node))
     for child in node.children:
         recur_node(child, level + 1)
 
 
 def load(filename=None):
-    myprint()
-    myprint("trying: " + filename)
+    log.warning("trying: " + filename)
 
     scene = pyassimp.load(
         filename, processing=pyassimp.postprocess.aiProcess_Triangulate
     )
 
     # the model we load
-    print("MODEL: " + filename)
+    log.info("MODEL: " + filename)
 
     # write some statistics
-    myprint("SCENE:")
-    myprint("  meshes:" + str(len(scene.meshes)))
-    myprint("  materials:" + str(len(scene.materials)))
-    myprint("  textures:" + str(len(scene.textures)))
+    log.info("SCENE:")
+    log.info("  meshes:" + str(len(scene.meshes)))
+    log.info("  materials:" + str(len(scene.materials)))
+    log.info("  textures:" + str(len(scene.textures)))
 
-    myprint("NODES:")
+    log.info("NODES:")
     recur_node(scene.rootnode)
 
-    myprint("MESHES:")
+    log.info("MESHES:")
     for index, mesh in enumerate(scene.meshes):
-        myprint("  MESH" + str(index + 1))
-        myprint("    material id:" + str(mesh.materialindex + 1))
-        myprint("    vertices:" + str(len(mesh.vertices)))
-        myprint("    first 3 verts:\n" + str(mesh.vertices[:3]))
+        log.info("  MESH" + str(index + 1))
+        log.info("    material id:" + str(mesh.materialindex + 1))
+        log.info("    vertices:" + str(len(mesh.vertices)))
+        log.info("    first 3 verts:\n" + str(mesh.vertices[:3]))
         if mesh.normals.any():
-            myprint("    first 3 normals:\n" + str(mesh.normals[:3]))
+            log.info("    first 3 normals:\n" + str(mesh.normals[:3]))
         else:
-            myprint("    no normals")
-        myprint("    colors:" + str(len(mesh.colors)))
+            log.info("    no normals")
+        log.info("    colors:" + str(len(mesh.colors)))
         tcs = mesh.texturecoords
         if tcs.any():
             for index, tc in enumerate(tcs):
-                myprint(
+                log.info(
                     "    texture-coords "
                     + str(index)
                     + ":"
@@ -154,68 +144,123 @@ def load(filename=None):
                 )
 
         else:
-            myprint("    no texture coordinates")
-        myprint("    uv-component-count:" + str(len(mesh.numuvcomponents)))
-        myprint(
+            log.info("    no texture coordinates")
+        log.info("    uv-component-count:" + str(len(mesh.numuvcomponents)))
+        log.info(
             "    faces:" + str(len(mesh.faces)) + " -> first:\n" + str(mesh.faces[:3])
         )
-        myprint(
+        log.info(
             "    bones:"
             + str(len(mesh.bones))
             + " -> first:"
             + str([str(b) for b in mesh.bones[:3]])
         )
 
-    myprint("MATERIALS:")
+    log.info("MATERIALS:")
     for index, material in enumerate(scene.materials):
-        myprint("  MATERIAL (id:" + str(index + 1) + ")")
+        log.info("  MATERIAL (id:" + str(index + 1) + ")")
         for key, value in material.properties.items():
-            myprint("    %s: %s" % (key, value))
+            log.info("    %s: %s" % (key, value))
 
-    myprint("TEXTURES:")
+    log.info("TEXTURES:")
     for index, texture in enumerate(scene.textures):
-        myprint("  TEXTURE" + str(index + 1))
-        myprint("    width:" + str(texture.width))
-        myprint("    height:" + str(texture.height))
-        myprint("    hint:" + str(texture.achformathint))
-        myprint("    data (size):" + str(len(texture.data)))
+        log.info("  TEXTURE" + str(index + 1))
+        log.info("    width:" + str(texture.width))
+        log.info("    height:" + str(texture.height))
+        log.info("    hint:" + str(texture.achformathint))
+        log.info("    data (size):" + str(len(texture.data)))
 
     # Finally release the model
     pyassimp.release(scene)
+    log.info("====================================")
 
 
-def run_tests(basepaths):
+def run_tests(basepaths, excluded=[]):
     ok, err, bad = 0, 0, 0
+
+    def do_load(filename, excluded, extensions):
+        nonlocal ok
+        nonlocal err
+        nonlocal bad
+        if filename in excluded:
+            log.warning("Skipping '%s'" % (filename,))
+            return
+        _, ext = os.path.splitext(filename)
+        if not ext in extensions:
+            return
+        try:
+            load(filename)
+            ok += 1
+        except pyassimp.errors.AssimpError as error:
+            # Assimp error is fine; this is a controlled case.
+            log.exception("Error encountered while loading '%s'" % (filename,))
+            err += 1
+        except Exception as e:
+            try:
+                errtype = type(e).__name__
+            except:
+                errtype = ""
+            log.exception(
+                "Error<%s> encountered while loading '%s': %s" % (errtype, filename, e)
+            )
+            bad += 1
+
     for bpath in basepaths:
         for path in glob.glob(bpath):
-            myprint("Looking for models in %s..." % path)
-            for root, dirs, files in os.walk(path):
-                for afile in files:
-                    base, ext = os.path.splitext(afile)
-                    if ext in extensions:
-                        filename = os.path.join(root, afile)
-                        if filename in badfiles:
-                            print("Skipping '%s'" % (filename,))
-                            continue
-                        try:
-                            load(filename)
-                            ok += 1
-                        except pyassimp.errors.AssimpError as error:
-                            # Assimp error is fine; this is a controlled case.
-                            myprint(error)
-                            err += 1
-                        except Exception as e:
-                            try: errtype=type(e).__name__
-                            except: errtype=""
-                            print(
-                                "Error<%s> encountered while loading '%s': %s"
-                                % (errtype, filename, e)
-                            )
-                            bad += 1
-    myprint("** Loaded %s models, got %s controlled errors and %s unhandled errors" % (ok, err, bad))
+            if os.path.isfile(path):
+                do_load(path, excluded, extensions)
+            else:
+                log.warning("Looking for models in %s..." % path)
+                for root, dirs, files in os.walk(path):
+                    for afile in files:
+                        do_load(os.path.join(root, afile), excluded, extensions)
+    log.warning(
+        "** Loaded %s models, got %s assimp errors and %s other errors" % (ok, err, bad)
+    )
     return 0
 
 
+def parseCmdlineArgs():
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-v", "--verbose", action="count", help="raise verbosity", default=0
+    )
+    parser.add_argument(
+        "-q", "--quiet", action="count", help="lower verbosity", default=0
+    )
+
+    parser.add_argument(
+        "--extensions",
+        action="append",
+        help="only try loading models with that match the given (':'-delimited list of) extensions (DEFAULT: all known extensions)",
+    )
+    parser.add_argument(
+        "-x",
+        "--exclude",
+        action="append",
+        metavar="file",
+        help="exclude file from test",
+    )
+    parser.add_argument(
+        "directory", nargs="+", help="directory to recursively search for models"
+    )
+
+    args = parser.parse_args()
+    log.setLevel(
+        max(0, min(logging.FATAL, logging.INFO + (args.quiet - args.verbose) * 10))
+    )
+    del args.quiet
+    del args.verbose
+    args.extensions = [
+        ext for extensions in args.extensions or [] for ext in extensions.split(":")
+    ]
+    return args
+
+
 if __name__ == "__main__":
-    ret = run_tests(sys.argv[1:] or datadirs)
+    args = parseCmdlineArgs()
+    extensions = args.extensions or extensions
+    ret = run_tests(args.directory, args.exclude or badfiles)
     sys.exit(ret)
