@@ -3,5 +3,7 @@ Depends: assimp-utils,
  assimp-testmodels,
 
 Tests: quicktest.py
+Restrictions:
+ allow-stderr,
 Depends: python3-pyassimp,
  assimp-testmodels,
