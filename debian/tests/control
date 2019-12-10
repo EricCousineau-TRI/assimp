@@ -2,7 +2,7 @@ Test-Command: find /usr/share/assimp/models/ -type f -exec ./debian/tests/assimp
 Depends: assimp-utils,
  assimp-testmodels,
 
-Tests: quicktest.py
+Test-Command: ./debian/tests/quicktest.py /usr/share/assimp/models/
 Restrictions:
  allow-stderr,
 Depends: python3-pyassimp,
