@@ -90,6 +90,13 @@ extensions = [
     ".zgl",
 ]
 
+# Tests are broken on s390x, so disable them (cf. #944742)
+import platform
+if platform.machine() == 's390x':
+    extensions.remove(".gltf")
+    extensions.remove(".fbx")
+    extensions.remove(".glb")
+
 badfiles = [
     "/usr/share/assimp/models/invalid/OutOfMemory.off",
 ]
