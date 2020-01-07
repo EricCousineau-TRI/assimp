@@ -1,3 +1,11 @@
+assimp (5.0.0~ds2-4.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+    (with maintainer's permission)
+  * Disable some tests on s390x (Closes: #944742)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Tue, 07 Jan 2020 19:49:46 +0100
+
 assimp (5.0.0~ds2-4) unstable; urgency=medium
 
   * More PyAssimp autopkgtest-fixes (Closes: #944742)
