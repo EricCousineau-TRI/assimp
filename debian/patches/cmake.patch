@@ -22,8 +22,8 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  # Commands may need to know the format version.
  set(CMAKE_IMPORT_FILE_VERSION 1)
  
-@@ -66,25 +68,23 @@
-     set(sharedLibraryName "libassimp${ASSIMP_LIBRARY_SUFFIX}@CMAKE_SHARED_LIBRARY_SUFFIX@.@ASSIMP_VERSION_MAJOR@")
+@@ -70,25 +72,23 @@
+     endif()
      set_target_properties(assimp::assimp PROPERTIES
        IMPORTED_SONAME_RELEASE "${sharedLibraryName}"
 -      IMPORTED_LOCATION_RELEASE "${_IMPORT_PREFIX}/lib/${sharedLibraryName}"
