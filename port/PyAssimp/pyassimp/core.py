@@ -442,7 +442,7 @@ def _finalize_mesh(mesh, target):
 
     # prepare faces
     if numpy:
-        faces = numpy.array([f.indices for f in target.faces], dtype=numpy.int32)
+        faces = numpy.array([numpy.array(f.indices, dtype=numpy.int32) for f in target.faces])
     else:
         faces = [f.indices for f in target.faces]
     setattr(target, 'faces', faces)
