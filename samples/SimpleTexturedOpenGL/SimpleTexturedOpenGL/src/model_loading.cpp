@@ -19,7 +19,7 @@
 #include <GL/glu.h>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "contrib/stb_image/stb_image.h"
+#include <stb/stb_image.h>
 
 #include <fstream>
 

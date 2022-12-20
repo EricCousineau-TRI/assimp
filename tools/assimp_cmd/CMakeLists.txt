@@ -48,12 +48,10 @@ INCLUDE_DIRECTORIES(
 LINK_DIRECTORIES( ${Assimp_BINARY_DIR} ${Assimp_BINARY_DIR}/lib )
 
 ADD_EXECUTABLE( assimp_cmd
-  assimp_cmd.rc
   CompareDump.cpp
   ImageExtractor.cpp
   Main.cpp
   Main.h
-  resource.h
   WriteDumb.cpp
   Info.cpp
   Export.cpp
