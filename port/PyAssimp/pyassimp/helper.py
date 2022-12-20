@@ -125,6 +125,15 @@ def get_bounding_box_for_node(node, bb_min, bb_max, transformation):
 
     return bb_min, bb_max
 
+def _resolve_bazel_shared_library_path(relpath):
+    # Resolves to abspath in Bazel runfiles tree for external repository named
+    # `@pyassimp_py`.
+    from bazel_tools.tools.python.runfiles import runfiles
+    manifest = runfiles.Create()
+    shared_lib_file = manifest.Rlocation(f"pyassimp_py/lib/{relpath}")
+    assert os.path.isfile(shared_lib_file)
+    return shared_lib_file
+
 def search_library():
     '''
     Loads the assimp library.
@@ -145,6 +154,8 @@ def search_library():
         pass
 
     libassimp = 'libassimp.so.5'
+    libassimp = _resolve_bazel_shared_library_path(libassimp)
+
     LIBASSIMP = ctypes.CDLL(libassimp)
     try:
         load = LIBASSIMP.aiImportFile
