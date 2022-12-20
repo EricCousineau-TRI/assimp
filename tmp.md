@@ -31,3 +31,16 @@ dpkg-source: info: applying pyassimp.patch
 dpkg-source: info: applying pyassimp_faces.patch
 dpkg-source: info: applying doxygen.patch
 ```
+
+
+```
+git am ${patch_dir}/use-system-minizip.patch
+
+mkcd build
+cmake .. -DCMAKE_INSTALL_PREFIX=${PWD}/install
+make -j install
+
+cd install
+mkdir -p lib/python3.10/site-packages
+ln -srf ../../port/PyAssimp/pyassimp lib/python3.10/site-packages/
+```

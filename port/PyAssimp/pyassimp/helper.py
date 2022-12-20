@@ -144,8 +144,10 @@ def search_library():
     except AttributeError:
         pass
 
-    libassimp = 'libassimp.so.5'
+    # libassimp = 'libassimp.so.5'
+    libassimp = "/home/eacousineau/devel/assimp/build/install/lib/libassimp.so.5"
     LIBASSIMP = ctypes.CDLL(libassimp)
+    print(LIBASSIMP)
     try:
         load = LIBASSIMP.aiImportFile
         load_mem = LIBASSIMP.aiImportFileFromMemory
